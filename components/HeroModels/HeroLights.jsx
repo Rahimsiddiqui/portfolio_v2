@@ -1,6 +1,12 @@
 import * as THREE from "three";
+import { useMemo } from "react";
 
 const HeroLights = () => {
+  const rectLight = useMemo(
+    () => new THREE.RectAreaLight("#a259ff", 8, 3, 2),
+    [],
+  );
+
   return (
     <>
       {/* ROOM LIGHTS */}
@@ -27,7 +33,7 @@ const HeroLights = () => {
       />
 
       <primitive
-        object={new THREE.RectAreaLight("#a259ff", 8, 3, 2)}
+        object={rectLight}
         position={[1, 3, 4]}
         intensity={1}
         rotation={[-Math.PI / 4, -Math.PI / 4, 0]}
