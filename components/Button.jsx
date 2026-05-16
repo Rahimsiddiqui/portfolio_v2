@@ -1,6 +1,6 @@
 const Button = ({ className, id, text }) => {
   return (
-    <a
+    <button
       onClick={(e) => {
         e.preventDefault();
 
@@ -16,6 +16,7 @@ const Button = ({ className, id, text }) => {
         }
       }}
       className={`${className ?? ""} cta-wrapper`}
+      aria-label={`Scroll to ${text}`}
     >
       <div className="cta-button group">
         <div className="bg-circle" />
@@ -24,7 +25,7 @@ const Button = ({ className, id, text }) => {
           <img src="/images/arrow-down.svg" alt="arrow" />
         </div>
       </div>
-    </a>
+    </button>
   );
 };
 
