@@ -10,31 +10,45 @@ gsap.registerPlugin(ScrollTrigger);
 const Counter = () => {
   const counterRef = useRef(null);
   const countersRef = useRef([]);
+  const triggersRef = useRef([]);
 
   useGSAP(() => {
+    // Kill previous ScrollTriggers to prevent memory leak
+    triggersRef.current.forEach((trigger) => trigger.kill());
+    triggersRef.current = [];
+
     countersRef.current.forEach((counter, index) => {
       const numberElement = counter.querySelector(".counter-number");
       const item = counterItems[index];
 
-      // Set initial value to 0
-      gsap.set(numberElement, { innerText: "0" });
+      // Create object to animate
+      const obj = { val: 0 };
 
-      // Create the counting animation
-      gsap.to(numberElement, {
-        innerText: item.value,
+      const tween = gsap.to(obj, {
+        val: item.value,
         duration: 2,
         ease: "power1.inOut",
-        snap: { innerText: 1 },
+        snap: { val: 1 },
+        onUpdate: () => {
+          numberElement.innerText = Math.round(obj.val) + item.suffix;
+        },
         scrollTrigger: {
           trigger: "#counter",
           start: "top 80%",
         },
-        // Add the suffix after counting is complete
-        onComplete: () => {
-          numberElement.textContent += `${item.suffix}`;
-        },
       });
-    }, counterRef);
+
+      // Store ScrollTrigger reference for cleanup
+      if (tween.scrollTrigger) {
+        triggersRef.current.push(tween.scrollTrigger);
+      }
+    });
+
+    // Cleanup function
+    return () => {
+      triggersRef.current.forEach((trigger) => trigger.kill());
+      triggersRef.current = [];
+    };
   }, []);
 
   return (

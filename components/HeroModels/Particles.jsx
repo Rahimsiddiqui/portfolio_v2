@@ -3,6 +3,7 @@ import { useFrame } from "@react-three/fiber";
 
 const Particles = ({ count = 200 }) => {
   const mesh = useRef();
+  const positionsRef = useRef(null);
 
   const particles = useMemo(() => {
     const temp = [];
@@ -19,6 +20,17 @@ const Particles = ({ count = 200 }) => {
     return temp;
   }, [count]);
 
+  // Create positions array once and reuse it
+  useMemo(() => {
+    const positions = new Float32Array(count * 3);
+    particles.forEach((p, i) => {
+      positions[i * 3] = p.position[0];
+      positions[i * 3 + 1] = p.position[1];
+      positions[i * 3 + 2] = p.position[2];
+    });
+    positionsRef.current = positions;
+  }, [count, particles]);
+
   useFrame(() => {
     const positions = mesh.current.geometry.attributes.position.array;
     for (let i = 0; i < count; i++) {
@@ -30,20 +42,13 @@ const Particles = ({ count = 200 }) => {
     mesh.current.geometry.attributes.position.needsUpdate = true;
   });
 
-  const positions = new Float32Array(count * 3);
-  particles.forEach((p, i) => {
-    positions[i * 3] = p.position[0];
-    positions[i * 3 + 1] = p.position[1];
-    positions[i * 3 + 2] = p.position[2];
-  });
-
   return (
     <points ref={mesh}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
           count={count}
-          array={positions}
+          array={positionsRef.current}
           itemSize={3}
         />
       </bufferGeometry>
