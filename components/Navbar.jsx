@@ -10,14 +10,16 @@ const Navbar = () => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
       isScrolled && setScrolled(true);
+      setScrolled(isScrolled);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <hedaer className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
+    <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
         <a href="#hero" className="logo">
           Rahim Siddiqui
@@ -42,7 +44,7 @@ const Navbar = () => {
           </div>
         </a>
       </div>
-    </hedaer>
+    </header>
   );
 };
 
