@@ -35,6 +35,82 @@ const counterItems = [
   { value: 94, suffix: "%", label: "On-time Delivery Rate" },
 ];
 
+const projects = [
+  {
+    title: "Mojito | Masterpiece made from GSAP and Next.js",
+    description:
+      "Mojito is a sleek web project showcasing a modern cocktail-themed interface with smooth GSAP animations and interactive UI elements built using Next.js. It focuses on clean design, fluid transitions, and an engaging user experience.",
+    allRounder: "cocktail-landing",
+    link: "coctail-landing",
+    technologies: ["React", "GSAP", "Next.js", "Tailwind", "React Responsive"],
+  },
+  {
+    title: "Macbook Landing Page",
+    description:
+      "A recreation of Apple's Macbook landing page, built with React and Tailwind for pixel-perfect design and smooth animations.",
+    allRounder: "macbook-14",
+    technologies: [
+      "React",
+      "GSAP",
+      "Three.js",
+      "Tailwind",
+      "Next.js",
+      "React Responsive",
+    ],
+  },
+  {
+    title: "Financial Atelier",
+    description:
+      "A web app where bespoke strategies turn finance into art with precision and insight.",
+    allRounder: "financialatelier",
+    technologies: ["React", "Node.js", "Serverless", "MongoDB", "Tailwind"],
+  },
+  {
+    title: "Qubli AI",
+    description:
+      "A comprehensive AI-driven platform for automated performance reviews and developer insights.",
+    allRounder: "qubli-ai",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
+  },
+  {
+    title: "Olivia",
+    description:
+      "A modern and minimal note-taking application built for distraction-free writing, organized note management, and seamless accessibility with search and shareable links.",
+    allRounder: "olivia",
+    link: "rahim-olivia",
+    technologies: [
+      "React",
+      "Localstorage",
+      "Next.js",
+      "Tailwind",
+      "Context API",
+    ],
+  },
+  {
+    title: "Expresso",
+    description:
+      "A sleek and minimal speech-to-text web app designed for quick real-time transcription, a clean distraction-free experience, and smooth, responsive voice input for effortless note capture.",
+    allRounder: "expresso",
+    link: "rahim-expresso",
+    technologies: [
+      "React",
+      "Localstorage",
+      "Next.js",
+      "Tailwind",
+      "Context API",
+      "Web Speech API",
+    ],
+  },
+  {
+    title: "Nexus",
+    description:
+      "A modern and responsive todo application built for fast task management, seamless productivity, and smooth user interactions.",
+    allRounder: "todo-app",
+    link: "rahim-todo-app",
+    technologies: ["React", "Localstorage", "Next.js", "Tailwind"],
+  },
+];
+
 const logoIconsList = [
   {
     imgPath: "/images/logos/company-logo-1.png",
@@ -278,4 +354,5 @@ export {
   techStackIcons,
   techStackImgs,
   navLinks,
+  projects,
 };

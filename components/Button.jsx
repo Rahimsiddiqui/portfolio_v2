@@ -4,6 +4,10 @@ const Button = ({ className, id, text }) => {
       onClick={(e) => {
         e.preventDefault();
 
+        if (id.includes("/projects")) {
+          window.location.href = "/projects";
+        }
+
         const target = document.getElementById(id);
 
         if (target && id) {
@@ -22,7 +26,15 @@ const Button = ({ className, id, text }) => {
         <div className="bg-circle" />
         <p className="text">{text}</p>
         <div className="arrow-wrapper">
-          <img src="/images/arrow-down.svg" alt="arrow" />
+          {id.includes("/projects") ? (
+            <img
+              src="/images/arrow-down.svg"
+              className="-rotate-90"
+              alt="arrow"
+            />
+          ) : (
+            <img src="/images/arrow-down.svg" alt="arrow" />
+          )}
         </div>
       </div>
     </button>

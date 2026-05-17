@@ -96,7 +96,7 @@ section {
   }
 
   .hero-text {
-    @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
+    @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none leading-22;
     img {
       @apply size-8 md:size-10 object-contain;
     }
@@ -184,6 +184,10 @@ section {
       @apply flex xl:flex-row flex-col gap-18 lg:gap-10 xl:gap-16 justify-between;
     }
 
+    .link-container {
+      @apply absolute top-3 right-4 flex gap-3 sm:gap-4;
+    }
+
     .first-project-wrapper {
       @apply h-full flex flex-col justify-between xl:w-[60%] xl:my-auto;
 
@@ -191,7 +195,7 @@ section {
         @apply xl:h-[70vh] md:h-[50vh] h-96 relative overflow-hidden;
 
         img {
-          @apply w-full h-full object-cover rounded-xl absolute inset-0 hover:scale-109 transition-[scale] duration-400;
+          @apply w-full h-full object-cover rounded-xl absolute inset-0 hover:scale-107 transition-[scale] duration-500;
         }
       }
     }
@@ -203,7 +207,7 @@ section {
         @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative overflow-hidden rounded-xl;
 
         img {
-          @apply w-full h-full object-contain rounded-xl absolute inset-0 hover:scale-109 transition-[scale] duration-400;
+          @apply w-full h-full object-center object-cover rounded-xl absolute inset-0 hover:scale-107 transition-[scale] duration-500;
         }
       }
 

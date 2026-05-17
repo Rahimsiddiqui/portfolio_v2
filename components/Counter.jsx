@@ -58,7 +58,7 @@ const Counter = () => {
           <div
             key={index}
             ref={(el) => el && (countersRef.current[index] = el)}
-            className="bg-zinc-900 rounded-lg gap-3 p-10 flex flex-col justify-center"
+            className="bg-zinc-900 border border-white/10 rounded-xl gap-3 p-10 flex flex-col justify-center hover:border-white/20 transition-colors duration-300"
           >
             <div className="counter-number text-white/90 text-5xl font-bold mb-2">
               0
