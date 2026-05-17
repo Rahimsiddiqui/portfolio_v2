@@ -7,12 +7,26 @@ import { counterItems } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Counter = () => {
+const Counter = ({ isLoading }) => {
   const counterRef = useRef(null);
   const countersRef = useRef([]);
   const triggersRef = useRef([]);
 
   useGSAP(() => {
+    if (isLoading) return;
+
+    gsap.from(".animate-card", {
+      yPercent: 35,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: "#counter",
+        start: "top 90%",
+      },
+    });
+
     // Kill previous ScrollTriggers to prevent memory leak
     triggersRef.current.forEach((trigger) => trigger.kill());
     triggersRef.current = [];
@@ -49,7 +63,7 @@ const Counter = () => {
       triggersRef.current.forEach((trigger) => trigger.kill());
       triggersRef.current = [];
     };
-  }, []);
+  }, [isLoading]);
 
   return (
     <div id="counter" ref={counterRef} className="padding-x-lg xl:mt-0 mt-32">
@@ -58,7 +72,7 @@ const Counter = () => {
           <div
             key={index}
             ref={(el) => el && (countersRef.current[index] = el)}
-            className="bg-zinc-900 border border-white/10 rounded-xl gap-3 p-10 flex flex-col justify-center hover:border-white/20 transition-colors duration-300"
+            className="bg-zinc-900 border border-white/10 rounded-xl gap-3 p-10 flex flex-col justify-center hover:border-white/20 transition-colors duration-300 animate-card"
           >
             <div className="counter-number text-white/90 text-5xl font-bold mb-2">
               0

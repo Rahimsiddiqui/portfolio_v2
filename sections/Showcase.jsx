@@ -11,36 +11,26 @@ import Button from "@/components/Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Showcase = () => {
+const Showcase = ({ isLoading }) => {
   const router = useRouter();
 
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".showcase-layout",
-        start: "top 80%",
-      },
-    });
+  useGSAP(
+    () => {
+      if (isLoading) return;
 
-    const projects = gsap.utils.toArray(".project");
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".showcase-layout",
+          start: "top 80%",
+        },
+      });
 
-    tl.fromTo(
-      projects[0],
-      {
-        x: -200,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power1.inOut",
-      },
-    )
-      .fromTo(
-        projects[1],
+      const projects = gsap.utils.toArray(".project");
+
+      tl.fromTo(
+        projects[0],
         {
-          x: 200,
+          x: -200,
           opacity: 0,
         },
         {
@@ -49,23 +39,38 @@ const Showcase = () => {
           duration: 0.8,
           ease: "power1.inOut",
         },
-        "-=0.2",
       )
-      .fromTo(
-        projects[2],
-        {
-          x: 200,
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power1.inOut",
-        },
-        "-=0.25",
-      );
-  }, []);
+        .fromTo(
+          projects[1],
+          {
+            x: 200,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power1.inOut",
+          },
+          "-=0.2",
+        )
+        .fromTo(
+          projects[2],
+          {
+            x: 200,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power1.inOut",
+          },
+          "-=0.25",
+        );
+    },
+    [isLoading],
+  );
 
   const githubDomain = "https://github.com/rahimsiddiqui/";
 

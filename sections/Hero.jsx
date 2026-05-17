@@ -10,36 +10,41 @@ import SplitText from "gsap/SplitText";
 
 gsap.registerPlugin(SplitText);
 
-const Hero = () => {
-  useGSAP(() => {
-    const htl = gsap.timeline();
+const Hero = ({ isLoading }) => {
+  useGSAP(
+    () => {
+      if (isLoading) return;
 
-    const titleSplit = SplitText.create(".hero-text h1", {
-      type: "lines",
-    });
+      const htl = gsap.timeline();
 
-    const miscSplit = SplitText.create(".animate", {
-      type: "lines",
-    });
+      const titleSplit = SplitText.create(".hero-text h1", {
+        type: "lines",
+      });
 
-    htl
-      .from(titleSplit.lines, {
-        opacity: 0,
-        yPercent: 35,
-        duration: 0.7,
-        stagger: 0.1,
-      })
-      .from(
-        miscSplit.lines,
-        {
+      const miscSplit = SplitText.create(".animate", {
+        type: "lines",
+      });
+
+      htl
+        .from(titleSplit.lines, {
           opacity: 0,
           yPercent: 35,
-          duration: 1,
-          stagger: 0.2,
-        },
-        "-=0.3",
-      );
-  }, []);
+          duration: 0.7,
+          stagger: 0.1,
+        })
+        .from(
+          miscSplit.lines,
+          {
+            opacity: 0,
+            yPercent: 35,
+            duration: 1,
+            stagger: 0.2,
+          },
+          "-=0.3",
+        );
+    },
+    [isLoading],
+  );
 
   return (
     <section id="hero" className="relative overflow-hidden">
@@ -95,7 +100,7 @@ const Hero = () => {
       </div>
 
       {/* COUNTER */}
-      <Counter />
+      <Counter isLoading={isLoading} />
     </section>
   );
 };
