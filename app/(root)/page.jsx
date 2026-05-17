@@ -4,6 +4,7 @@ import Showcase from "@/sections/Showcase";
 
 // Components
 import Navbar from "@/components/Navbar";
+import Technologies from "@/sections/Technologies";
 
 export default function LandingPage() {
   return (
@@ -12,6 +13,7 @@ export default function LandingPage() {
       <main>
         <Hero />
         <Showcase />
+        <Technologies />
       </main>
     </>
   );

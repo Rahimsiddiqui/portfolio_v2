@@ -111,40 +111,33 @@ const projects = [
   },
 ];
 
-const logoIconsList = [
-  {
-    imgPath: "/images/logos/company-logo-1.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-2.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-3.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-4.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-5.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-6.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-7.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-8.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-9.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-10.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-11.png",
-  },
+const technologiesList = [
+  // Languages
+  { name: "HTML", icon: "/images/logos/html.svg" },
+  { name: "CSS", icon: "/images/logos/css.svg" },
+  { name: "JavaScript", icon: "/images/logos/js.svg" },
+  { name: "TypeScript", icon: "/images/logos/ts.svg" },
+
+  // Frontend Frameworks
+  { name: "React", icon: "/images/logos/react.svg" },
+  { name: "Next.js", icon: "/images/logos/nextjs.svg" },
+  { name: "Tailwind", icon: "/images/logos/tailwind.svg" },
+
+  // Animation & 3D
+  { name: "GSAP", icon: "/images/logos/gsap.svg" },
+  { name: "Three.js", icon: "/images/logos/threejs.svg" },
+
+  // Backend & Database
+  { name: "Node.js", icon: "/images/logos/nodejs.svg" },
+  { name: "Express", icon: "/images/logos/express.svg" },
+  { name: "MongoDB", icon: "/images/logos/mongodb.svg" },
+
+  // Version Control
+  { name: "Git", icon: "/images/logos/git.svg" },
+
+  // Tools & Platforms
+  { name: "Github", icon: "/images/logos/github.svg" },
+  { name: "Vercel", icon: "/images/logos/vercel.svg" },
 ];
 
 const abilities = [
@@ -345,7 +338,7 @@ const socialImgs = [
 export {
   words,
   abilities,
-  logoIconsList,
+  technologiesList,
   counterItems,
   expCards,
   expLogos,
