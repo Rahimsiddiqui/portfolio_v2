@@ -111,35 +111,6 @@ const projects = [
   },
 ];
 
-const technologiesList = [
-  // Languages
-  { name: "HTML", icon: "/images/logos/html.svg" },
-  { name: "CSS", icon: "/images/logos/css.svg" },
-  { name: "JavaScript", icon: "/images/logos/js.svg" },
-  { name: "TypeScript", icon: "/images/logos/ts.svg" },
-
-  // Frontend Frameworks
-  { name: "React", icon: "/images/logos/react.svg" },
-  { name: "Next.js", icon: "/images/logos/nextjs.svg" },
-  { name: "Tailwind", icon: "/images/logos/tailwind.svg" },
-
-  // Animation & 3D
-  { name: "GSAP", icon: "/images/logos/gsap.svg" },
-  { name: "Three.js", icon: "/images/logos/threejs.svg" },
-
-  // Backend & Database
-  { name: "Node.js", icon: "/images/logos/nodejs.svg" },
-  { name: "Express", icon: "/images/logos/express.svg" },
-  { name: "MongoDB", icon: "/images/logos/mongodb.svg" },
-
-  // Version Control
-  { name: "Git", icon: "/images/logos/git.svg" },
-
-  // Tools & Platforms
-  { name: "Github", icon: "/images/logos/github.svg" },
-  { name: "Vercel", icon: "/images/logos/vercel.svg" },
-];
-
 const abilities = [
   {
     imgPath: "/images/seo.png",
@@ -338,7 +309,6 @@ const socialImgs = [
 export {
   words,
   abilities,
-  technologiesList,
   counterItems,
   expCards,
   expLogos,
