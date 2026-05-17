@@ -76,7 +76,7 @@ section {
   }
 
   .grid-3-cols {
-    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6;
+    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-10;
   }
 
   .grid-3-cols-md-tight {
