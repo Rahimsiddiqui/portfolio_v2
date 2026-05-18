@@ -132,59 +132,69 @@ const abilities = [
   },
 ];
 
-const techStackImgs = [
+const mainTechStackIcons = [
   {
-    name: "React Developer",
-    imgPath: "/images/logos/react.png",
+    name: "MongoDB",
+    modelPath: "/models/mongodb.glb",
+    scale: 52,
+    rotation: [0, 0, 0],
   },
   {
-    name: "Python Developer",
-    imgPath: "/images/logos/python.svg",
+    name: "Express",
+    modelPath: "/models/express.glb",
+    scale: 1.1,
+    rotation: [Math.PI / 2, 0, 0],
   },
   {
-    name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
+    name: "React",
+    modelPath: "/models/react_logo-transformed.glb",
+    scale: 0.9,
+    rotation: [0, 0, 0],
   },
   {
-    name: "Interactive Developer",
-    imgPath: "/images/logos/three.png",
-  },
-  {
-    name: "Project Manager",
-    imgPath: "/images/logos/git.svg",
+    name: "Node.js",
+    modelPath: "/models/node-transformed.glb",
+    scale: 4.5,
+    rotation: [0, -Math.PI / 2, 0],
   },
 ];
 
-const techStackIcons = [
+const miscTechStackIcons = [
   {
-    name: "React Developer",
-    modelPath: "/models/react_logo-transformed.glb",
-    scale: 1,
+    name: "Three.js",
+    modelPath: "/models/threejs.glb",
+    scale: 0.035,
     rotation: [0, 0, 0],
   },
   {
-    name: "Python Developer",
-    modelPath: "/models/python-transformed.glb",
-    scale: 0.8,
-    rotation: [0, 0, 0],
-  },
-  {
-    name: "Backend Developer",
-    modelPath: "/models/node-transformed.glb",
-    scale: 5,
-    rotation: [0, -Math.PI / 2, 0],
-  },
-  {
-    name: "Interactive Developer",
-    modelPath: "/models/three.js-transformed.glb",
-    scale: 0.05,
-    rotation: [0, 0, 0],
-  },
-  {
-    name: "Project Manager",
-    modelPath: "/models/git-svg-transformed.glb",
-    scale: 0.05,
+    name: "Git",
+    modelPath: "/models/git.glb",
+    scale: 0.035,
     rotation: [0, -Math.PI / 4, 0],
+  },
+  {
+    name: "Tailwind CSS",
+    modelPath: "/models/tailwindcss.glb",
+    scale: 42,
+    rotation: [0, 0, 0],
+  },
+  {
+    name: "Lucide React",
+    modelPath: "/models/lucide-react.glb",
+    scale: 1.3,
+    rotation: [Math.PI / 2, 0, 0],
+  },
+  {
+    name: "Shadcn/ui",
+    modelPath: "/models/shadcn.glb",
+    scale: 0.9,
+    rotation: [Math.PI / 2, 0, 0],
+  },
+  {
+    name: "SCSS",
+    modelPath: "/models/scss.glb",
+    scale: 0.9,
+    rotation: [Math.PI / 2, 0, 0],
   },
 ];
 
@@ -283,8 +293,8 @@ export {
   expLogos,
   testimonials,
   socialImgs,
-  techStackIcons,
-  techStackImgs,
+  mainTechStackIcons,
+  miscTechStackIcons,
   navLinks,
   projects,
 };
