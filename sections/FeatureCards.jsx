@@ -18,7 +18,10 @@ const FeatureCards = () => {
   }, []);
 
   return (
-    <section id="feature-cards" className="w-full mt-28 md:mt-24 padding-x-lg">
+    <section
+      id="feature-cards"
+      className="w-full mt-28 md:mt-24 padding-x-lg max-w-520 mx-auto"
+    >
       <div className="mx-auto grid-3-cols">
         {abilities.map(({ imgPath, title, description }) => (
           <div

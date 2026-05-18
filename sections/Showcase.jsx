@@ -73,7 +73,7 @@ const Showcase = ({ isLoading }) => {
   const githubDomain = "https://github.com/rahimsiddiqui/";
 
   return (
-    <section id="work" className="app-showcase">
+    <section id="work" className="app-showcase max-w-520 mx-auto">
       <div className="w-full">
         <div className="showcase-layout">
           {/* FIRST PROJECT */}

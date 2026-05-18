@@ -51,7 +51,7 @@ const Hero = ({ isLoading }) => {
   }, [isLoading]);
 
   return (
-    <section id="hero" className="relative overflow-hidden">
+    <section id="hero" className="relative overflow-hidden max-w-520 mx-auto">
       <div className="absolute top-0 left-0 z-10">
         <img src="/images/bg.png" alt="Background Image" />
       </div>
