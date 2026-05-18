@@ -42,6 +42,12 @@ const Hero = ({ isLoading }) => {
         },
         "-=0.3",
       );
+
+    return () => {
+      htl.kill();
+      titleSplit.revert();
+      miscSplit.revert();
+    };
   }, [isLoading]);
 
   return (

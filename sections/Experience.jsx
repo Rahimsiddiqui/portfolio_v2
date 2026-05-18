@@ -1,3 +1,5 @@
+"use client";
+
 import GlowCard from "@/components/GlowCard";
 import TitleHeader from "@/components/TitleHeader";
 import { expCards } from "@/constants";
@@ -29,9 +31,7 @@ const Experience = () => {
         start: "top center",
         end: "70% center",
         onUpdate: (self) => {
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-          });
+          gsap.set(".timeline", { scaleY: 1 - self.progress });
         },
       },
     });
@@ -89,7 +89,7 @@ const Experience = () => {
                         width={50}
                         height={50}
                         src={card.logoPath}
-                        alt="Logo"
+                        alt={`${card.title} logo`}
                       />
                     </div>
                     <div>
