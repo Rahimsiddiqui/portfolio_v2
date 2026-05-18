@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+
 // Sections
 import Hero from "@/sections/Hero";
 import Showcase from "@/sections/Showcase";
 import FeatureCards from "@/sections/FeatureCards";
 import Experience from "@/sections/Experience";
+import TechStack from "@/sections/TechStack";
 
 // Components
 import Navbar from "@/components/Navbar";
@@ -25,6 +27,7 @@ export default function LandingPage() {
             <Showcase isLoading={isLoading} />
             <FeatureCards />
             <Experience />
+            <TechStack />
           </main>
         </>
       )}
