@@ -5,6 +5,7 @@ import { useState } from "react";
 import Hero from "@/sections/Hero";
 import Showcase from "@/sections/Showcase";
 import FeatureCards from "@/sections/FeatureCards";
+import Experience from "@/sections/Experience";
 
 // Components
 import Navbar from "@/components/Navbar";
@@ -23,6 +24,7 @@ export default function LandingPage() {
             <Hero isLoading={isLoading} />
             <Showcase isLoading={isLoading} />
             <FeatureCards />
+            <Experience />
           </main>
         </>
       )}

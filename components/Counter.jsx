@@ -15,6 +15,15 @@ const Counter = ({ isLoading }) => {
   useGSAP(() => {
     if (isLoading) return;
 
+    // Kill all previous ScrollTriggers before creating new ones
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.trigger?.closest?.("#counter")) {
+        trigger.kill();
+      }
+    });
+    triggersRef.current.forEach((trigger) => trigger.kill());
+    triggersRef.current = [];
+
     gsap.from(".animate-card", {
       yPercent: 35,
       opacity: 0,
@@ -26,10 +35,6 @@ const Counter = ({ isLoading }) => {
         start: "top 90%",
       },
     });
-
-    // Kill previous ScrollTriggers to prevent memory leak
-    triggersRef.current.forEach((trigger) => trigger.kill());
-    triggersRef.current = [];
 
     countersRef.current.forEach((counter, index) => {
       const numberElement = counter.querySelector(".counter-number");

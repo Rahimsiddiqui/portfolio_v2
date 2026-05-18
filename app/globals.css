@@ -265,6 +265,10 @@ section {
     @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100;
   }
 
+  .exp-text {
+    @apply flex xl:gap-20 md:gap-10 gap-5 relative z-20;
+  }
+
   .exp-card-wrapper {
     @apply flex flex-col-reverse xl:flex-row xl:gap-20 gap-10 justify-between;
   }
@@ -383,11 +387,11 @@ section {
   width: 2px;
   background: linear-gradient(
     0deg,
-    rgba(69, 222, 196, 0) 0%,
-    #62e0ff 25%,
-    #52aeff 37.51%,
-    #fd5c79 62.83%,
-    #6d45ce 92.91%
+    rgba(0, 255, 136, 0) 0%,
+    #00ff99 25%,
+    #00ee88 37.51%,
+    #00cc77 62.83%,
+    #009955 92.91%
   );
 }
 

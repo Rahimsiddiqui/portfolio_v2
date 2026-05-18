@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
@@ -14,23 +15,35 @@ gsap.registerPlugin(ScrollTrigger);
 const Showcase = ({ isLoading }) => {
   const router = useRouter();
 
-  useGSAP(
-    () => {
-      if (isLoading) return;
+  useGSAP(() => {
+    if (isLoading) return;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".showcase-layout",
-          start: "top 80%",
-        },
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".showcase-layout",
+        start: "top 80%",
+      },
+    });
 
-      const projects = gsap.utils.toArray(".project");
+    const projects = gsap.utils.toArray(".project");
 
-      tl.fromTo(
-        projects[0],
+    tl.fromTo(
+      projects[0],
+      {
+        x: -200,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power1.inOut",
+      },
+    )
+      .fromTo(
+        projects[1],
         {
-          x: -200,
+          x: 200,
           opacity: 0,
         },
         {
@@ -39,38 +52,23 @@ const Showcase = ({ isLoading }) => {
           duration: 0.8,
           ease: "power1.inOut",
         },
+        "-=0.2",
       )
-        .fromTo(
-          projects[1],
-          {
-            x: 200,
-            opacity: 0,
-          },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power1.inOut",
-          },
-          "-=0.2",
-        )
-        .fromTo(
-          projects[2],
-          {
-            x: 200,
-            opacity: 0,
-          },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power1.inOut",
-          },
-          "-=0.25",
-        );
-    },
-    [isLoading],
-  );
+      .fromTo(
+        projects[2],
+        {
+          x: 200,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power1.inOut",
+        },
+        "-=0.25",
+      );
+  }, [isLoading]);
 
   const githubDomain = "https://github.com/rahimsiddiqui/";
 
@@ -86,9 +84,13 @@ const Showcase = ({ isLoading }) => {
               onClick={() => router.push(`/projects/${project.allRounder}`)}
             >
               <div className="image-wrapper relative">
-                <img
+                <Image
                   src={`/images/${project.allRounder}.png`}
                   alt={project.title}
+                  fill
+                  priority
+                  className="object-cover rounded-xl"
+                  sizes="(max-width: 768px) 100vw, 60vw"
                 />
                 <div
                   className="link-container"
@@ -150,9 +152,12 @@ const Showcase = ({ isLoading }) => {
                 onClick={() => router.push(`/projects/${project.allRounder}`)}
               >
                 <div className="image-wrapper relative">
-                  <img
+                  <Image
                     src={`/images/${project.allRounder}.png`}
                     alt={project.title}
+                    fill
+                    className="object-cover rounded-xl"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 40vw"
                   />
                   <div
                     className="link-container"
