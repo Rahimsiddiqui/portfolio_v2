@@ -17,8 +17,11 @@ export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <>
-      {isLoading && <TerminalLoader onComplete={() => setIsLoading(false)} />}
+    <div className="max-w-7xl mx-auto">
+      {isLoading && (
+        <TerminalLoader onComplete={() => setIsLoading(false)} />
+      )}
+
       {!isLoading && (
         <>
           <Navbar />
@@ -31,6 +34,6 @@ export default function LandingPage() {
           </main>
         </>
       )}
-    </>
+    </div>
   );
 }
