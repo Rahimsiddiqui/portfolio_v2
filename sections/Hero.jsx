@@ -7,44 +7,42 @@ import { words } from "@/constants/index";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/all";
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const Hero = ({ isLoading }) => {
-  useGSAP(
-    () => {
-      if (isLoading) return;
+  useGSAP(() => {
+    if (isLoading) return;
 
-      const htl = gsap.timeline();
+    const htl = gsap.timeline();
 
-      const titleSplit = SplitText.create(".hero-text h1", {
-        type: "lines",
-      });
+    const titleSplit = SplitText.create(".hero-text h1", {
+      type: "lines",
+    });
 
-      const miscSplit = SplitText.create(".animate", {
-        type: "lines",
-      });
+    const miscSplit = SplitText.create(".animate", {
+      type: "lines",
+    });
 
-      htl
-        .from(titleSplit.lines, {
+    htl
+      .from(titleSplit.lines, {
+        opacity: 0,
+        yPercent: 35,
+        duration: 0.7,
+        stagger: 0.1,
+      })
+      .from(
+        miscSplit.lines,
+        {
           opacity: 0,
           yPercent: 35,
-          duration: 0.7,
-          stagger: 0.1,
-        })
-        .from(
-          miscSplit.lines,
-          {
-            opacity: 0,
-            yPercent: 35,
-            duration: 1,
-            stagger: 0.2,
-          },
-          "-=0.3",
-        );
-    },
-    [isLoading],
-  );
+          duration: 1,
+          stagger: 0.2,
+        },
+        "-=0.3",
+      );
+  }, [isLoading]);
 
   return (
     <section id="hero" className="relative overflow-hidden">

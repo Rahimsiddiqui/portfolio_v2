@@ -46,7 +46,7 @@ const TerminalLoader = ({ onComplete }) => {
       "Compiling custom GLSL shaders...",
       "Optimizing geometry buffers...",
       "Connecting to secure server...",
-      "Fetching creative data...",
+      "Fetching data...",
       "System check: 100% stable",
       "Welcome, user. Terminal ready.",
     ];
@@ -68,7 +68,7 @@ const TerminalLoader = ({ onComplete }) => {
               onComplete: onComplete,
             });
           }
-        }, 1200);
+        }, 600);
       }
     }, 250);
 
@@ -98,7 +98,7 @@ const TerminalLoader = ({ onComplete }) => {
           <div className="text-[10px] text-[#33ff33]/40 uppercase tracking-[0.2em] font-bold">
             System Terminal v2.0.4
           </div>
-          <div className="w-12" /> {/* Spacer */}
+          <div className="hidden min-[400px]:block w-12" /> {/* Spacer */}
         </div>
 
         {/* Terminal Content */}
@@ -131,7 +131,7 @@ const TerminalLoader = ({ onComplete }) => {
         </div>
 
         {/* Footer info */}
-        <div className="px-4 py-2 bg-[#0d0d0d] border-t border-[#33ff33]/5 text-[9px] text-[#33ff33]/20 flex justify-between">
+        <div className="px-4 py-2 bg-[#0d0d0d] border-t border-[#33ff33]/5 text-[9px] text-[#58ad58] flex justify-between">
           <span>Status: INITIALIZING...</span>
           <span>Load: {((logs.length / 11) * 100).toFixed(0)}%</span>
         </div>
