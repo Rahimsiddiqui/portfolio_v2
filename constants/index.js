@@ -251,11 +251,11 @@ const testimonials = [
     imgPath: "/images/client5.png",
   },
   {
-    name: "Floyd Miles",
-    mentions: "@floydmiles",
+    name: "Zayan Siddiqui",
+    mentions: "@zayansiddiqui",
     review:
-      "Rahim’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
-    imgPath: "/images/client4.png",
+      "I've rarely come across someone Rahim's age with such a mature grasp of modern web development. At just 14, he's already working confidently across the full MERN stack. I have no doubt he'll be an exceptional talent in this industry.",
+    imgPath: "/images/zayansiddiqui.jpg",
   },
   {
     name: "Albert Flores",

@@ -1,6 +1,7 @@
 import GlowCard from "@/components/GlowCard";
 import TitleHeader from "@/components/TitleHeader";
 import { testimonials } from "@/constants";
+import Image from "next/image";
 
 const Testimonials = () => {
   return (
@@ -18,7 +19,13 @@ const Testimonials = () => {
             <GlowCard key={mentions} card={{ review }}>
               <div className="flex items-center gap-3">
                 <div>
-                  <img src={imgPath} alt={name} />
+                  <Image
+                    src={imgPath}
+                    alt={name}
+                    className="rounded-full bg-zinc-900"
+                    width={48}
+                    height={48}
+                  />
                 </div>
                 <div>
                   <p className="font-bold text-white/80">{name}</p>
