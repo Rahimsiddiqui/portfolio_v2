@@ -1,6 +1,6 @@
 "use client";
 
-import TechIcon from "@/components/Models/TechLogos/TechIcon";
+import TechIcon from "@/components/models/techlogos/TechIcon";
 import TitleHeader from "@/components/TitleHeader";
 import { mainTechStackIcons, miscTechStackIcons } from "@/constants";
 import { useGSAP } from "@gsap/react";

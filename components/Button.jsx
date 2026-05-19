@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Button = ({ className, id, text }) => {
   return (
     <button
@@ -27,10 +29,12 @@ const Button = ({ className, id, text }) => {
         <p className="text">{text}</p>
         <div className="arrow-wrapper">
           {id.includes("/projects") ? (
-            <img
+            <Image
               src="/images/arrow-down.svg"
               className="-rotate-90"
               alt="arrow"
+              width={24}
+              height={24}
             />
           ) : (
             <img src="/images/arrow-down.svg" alt="arrow" />

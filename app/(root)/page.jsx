@@ -9,6 +9,7 @@ import FeatureCards from "@/sections/FeatureCards";
 import Experience from "@/sections/Experience";
 import TechStack from "@/sections/TechStack";
 import Testimonials from "@/sections/Testimonials";
+import Contact from "@/sections/Contact";
 
 // Components
 import Navbar from "@/components/Navbar";
@@ -31,6 +32,7 @@ export default function LandingPage() {
             <Experience />
             <TechStack />
             <Testimonials />
+            <Contact />
           </main>
         </>
       )}
