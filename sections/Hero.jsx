@@ -2,7 +2,7 @@
 
 import Button from "@/components/Button";
 import Counter from "@/components/Counter";
-import HeroExperience from "@/components/HeroModels/HeroExperience";
+import HeroExperience from "@/components/models/hero/HeroExperience";
 import { words } from "@/constants/index";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

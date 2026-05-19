@@ -176,7 +176,7 @@ const miscTechStackIcons = [
     name: "Tailwind CSS",
     modelPath: "/models/tailwindcss.glb",
     scale: 42,
-    rotation: [0, 0, 0],
+    rotation: [-Math.PI / 2, 0, 0],
   },
   {
     name: "Lucide React",
@@ -255,7 +255,7 @@ const testimonials = [
     mentions: "@zayansiddiqui",
     review:
       "I've rarely come across someone Rahim's age with such a mature grasp of modern web development. At just 14, he's already working confidently across the full MERN stack. I have no doubt he'll be an exceptional talent in this industry.",
-    imgPath: "/images/zayansiddiqui.jpg",
+    imgPath: "/images/zayan.jpg",
   },
   {
     name: "Albert Flores",

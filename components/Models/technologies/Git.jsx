@@ -1,0 +1,19 @@
+import React from "react";
+import { useGLTF } from "@react-three/drei";
+
+export default function Git(props) {
+  const { nodes, materials } = useGLTF("/models/git.glb");
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        geometry={nodes.mesh_0.geometry}
+        material={nodes.mesh_0.material}
+        position={[-37.233, 50.062, 33.39]}
+        rotation={[0, Math.PI / 4, -Math.PI]}
+        scale={[-1.087, 1.087, 1.087]}
+      />
+    </group>
+  );
+}
+
+useGLTF.preload("/models/git.glb");
