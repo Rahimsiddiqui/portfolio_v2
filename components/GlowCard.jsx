@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRef, useCallback } from "react";
 
-const GlowCard = ({ card, children, idx }) => {
+const GlowCard = ({ card, children }) => {
   const cardRef = useRef(null);
 
   const handleMouseMove = useCallback((e) => {
@@ -21,7 +21,7 @@ const GlowCard = ({ card, children, idx }) => {
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className="card card-border timeline-card rounded-xl py-10 px-6 min-[450px]:p-10 mb-6 break-inside-avoid-column"
+      className={`card card-border ${card.mentions ? "review-card" : "timeline-card"} rounded-xl py-10 px-6 min-[450px]:p-10 mb-6 break-inside-avoid-column`}
     >
       <div className="glow" />
       <div className="flex items-center gap-1 mb-5">

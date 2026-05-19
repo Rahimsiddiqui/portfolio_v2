@@ -223,18 +223,18 @@ const expLogos = [
 
 const testimonials = [
   {
-    name: "Esther Howard",
-    mentions: "@estherhoward",
+    name: "Haris Siddiqui",
+    mentions: "@harissiddiqui",
     review:
-      "I can’t say enough good things about Rahim. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
-    imgPath: "/images/client1.png",
+      "Rahim is a highly talented and promising young developer with strong problem-solving skills and great potential. He consistently shows creativity, focus, and a solid understanding of web development, making him someone with a very bright future ahead.",
+    imgPath: "/images/haris.jpg",
   },
   {
-    name: "Wade Warren",
-    mentions: "@wadewarren",
+    name: "Arham Siddiqui",
+    mentions: "@arhamsiddiqui",
     review:
-      "Working with Rahim was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-    imgPath: "/images/client3.png",
+      "Rahim is a highly talented developer with great attention to detail and strong web development skills. He consistently produces clean, modern work and has a very bright future ahead.",
+    imgPath: "/images/arham.jpg",
   },
   {
     name: "Guy Hawkins",

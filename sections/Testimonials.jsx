@@ -1,9 +1,27 @@
+"use client";
+
 import GlowCard from "@/components/GlowCard";
 import TitleHeader from "@/components/TitleHeader";
 import { testimonials } from "@/constants";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Image from "next/image";
 
 const Testimonials = () => {
+  useGSAP(() => {
+    gsap.from(".review-card", {
+      yPercent: 35,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.inOut",
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: "#testimonials",
+        start: "top 80%",
+      },
+    });
+  }, []);
+
   return (
     <section
       id="testimonials"
@@ -16,7 +34,7 @@ const Testimonials = () => {
         />
         <div className="lg:columns-3 md:columns-2 columns-1 mt-16">
           {testimonials.map(({ mentions, imgPath, name, review }) => (
-            <GlowCard key={mentions} card={{ review }}>
+            <GlowCard key={mentions} card={{ review, mentions }}>
               <div className="flex items-center gap-3">
                 <div>
                   <Image
