@@ -3,10 +3,13 @@
 import { useGLTF, Environment, Float, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import * as THREE from "three";
 
-const TechIcon = ({ model }) => {
+const TechIcon = ({ model, applyScale = true }) => {
   const scene = useGLTF(model.modelPath);
+
+  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
 
   useEffect(() => {
     if (model.name === "Three.js") {
@@ -18,7 +21,7 @@ const TechIcon = ({ model }) => {
         }
       });
     }
-  }, [scene]);
+  }, [scene, model.name]);
 
   return (
     <Canvas>
@@ -29,7 +32,16 @@ const TechIcon = ({ model }) => {
       <OrbitControls enableZoom={false} />
 
       <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
-        <group scale={model.scale} rotation={model.rotation}>
+        <group
+          scale={
+            applyScale
+              ? isTablet
+                ? model.scale * 0.75
+                : model.scale
+              : model.scale
+          }
+          rotation={model.rotation}
+        >
           <primitive object={scene.scene} />
         </group>
       </Float>

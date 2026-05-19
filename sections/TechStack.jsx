@@ -40,7 +40,7 @@ const TechStack = () => {
               <div className="tech-card-animated-bg" />
               <div className="tech-card-content">
                 <div className="tech-icon-wrapper">
-                  <TechIcon model={icon} />
+                  <TechIcon model={icon} applyScale={true} />
                 </div>
                 <div className="padding-x w-full">
                   <p>{icon.name}</p>
@@ -59,7 +59,7 @@ const TechStack = () => {
               <div className="tech-card-animated-bg" />
               <div className="tech-card-content">
                 <div className="tech-icon-wrapper">
-                  <TechIcon model={icon} />
+                  <TechIcon model={icon} applyScale={false} />
                 </div>
                 <div className="padding-x w-full">
                   <p>{icon.name}</p>
