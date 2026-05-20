@@ -268,20 +268,24 @@ const testimonials = [
 
 const socialImgs = [
   {
-    name: "insta",
-    imgPath: "/images/insta.png",
+    name: "Instagram",
+    imgPath: "/images/instagram.svg",
+    url: "https://instagram.com/rahim_sid09",
   },
   {
-    name: "fb",
-    imgPath: "/images/fb.png",
+    name: "Mail",
+    imgPath: "/images/mail.svg",
+    url: "mailto:rahimsiddiqui122@gmail.com",
   },
   {
     name: "x",
-    imgPath: "/images/x.png",
+    imgPath: "/images/twitter.svg",
+    url: "https://x.com/rahimdeveloper",
   },
   {
     name: "linkedin",
-    imgPath: "/images/linkedin.png",
+    imgPath: "/images/linkedin.svg",
+    url: "https://www.linkedin.com/in/rahimdeveloper",
   },
 ];
 

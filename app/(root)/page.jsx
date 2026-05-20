@@ -14,6 +14,7 @@ import Contact from "@/sections/Contact";
 // Components
 import Navbar from "@/components/Navbar";
 import TerminalLoader from "@/components/TerminalLoader";
+import Footer from "../../components/Footer";
 
 export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,7 @@ export default function LandingPage() {
             <Testimonials />
             <Contact />
           </main>
+          <Footer />
         </>
       )}
     </>

@@ -20,8 +20,7 @@ const ContactExperience = () => {
       />
 
       <OrbitControls
-        // enableZoom={false}
-        minDistance={9}
+        enableZoom={false}
         minPolarAngle={Math.PI / 5}
         maxPolarAngle={Math.PI / 2}
       />
