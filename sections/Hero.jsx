@@ -1,5 +1,12 @@
 "use client";
 
+// Hero section
+// Coordinates the hero copy and 3D experience. Waits for both the terminal
+// loader to signal `isLoading === false` and for the 3D model (`modelReady`) to
+// finish loading before starting GSAP animations. While the GSAP intro runs
+// we temporarily disable expensive effects (particles, continuous frameloop)
+// to ensure a smooth animation on lower-end devices.
+
 import Button from "@/components/Button";
 import Counter from "@/components/Counter";
 import HeroExperience from "@/components/Models/hero/HeroExperience";
@@ -8,47 +15,79 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/all";
+import { useState, useRef } from "react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const Hero = ({ isLoading }) => {
+  const [modelReady, setModelReady] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const canvasRef = useRef(null);
+
   useGSAP(() => {
-    if (isLoading) return;
+    if (isLoading || !modelReady) return;
 
-    const htl = gsap.timeline();
+    let rafId = null;
+    let htl = null;
+    let titleSplit = null;
+    let miscSplit = null;
 
-    const titleSplit = SplitText.create(".hero-text h1", {
-      type: "lines",
-    });
+    // Start the animation on the next animation frame to allow the canvas to render
+    rafId = requestAnimationFrame(() => {
+      setIsAnimating(true);
+      htl = gsap.timeline({
+        delay: 0.15,
+        onComplete: () => setIsAnimating(false),
+      });
 
-    const miscSplit = SplitText.create(".animate", {
-      type: "lines",
-    });
+      titleSplit = SplitText.create(".hero-text h1", {
+        type: "lines",
+      });
 
-    htl
-      .from(titleSplit.lines, {
-        opacity: 0,
-        yPercent: 35,
-        duration: 0.7,
-        stagger: 0.1,
-      })
-      .from(
-        miscSplit.lines,
-        {
+      miscSplit = SplitText.create(".animate", {
+        type: "lines",
+      });
+
+      htl
+        .from(titleSplit.lines, {
           opacity: 0,
           yPercent: 35,
-          duration: 1,
-          stagger: 0.2,
-        },
-        "-=0.3",
-      );
+          duration: 0.7,
+          stagger: 0.1,
+        })
+        .from(
+          miscSplit.lines,
+          {
+            opacity: 0,
+            yPercent: 35,
+            duration: 1,
+            stagger: 0.2,
+          },
+          "-=0.3",
+        );
 
+      // Fade in 3D canvas smoothly once model is loaded
+      if (canvasRef.current) {
+        htl.fromTo(
+          canvasRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 1 },
+          "-=0.5",
+        );
+      }
+    });
     return () => {
-      htl.kill();
-      titleSplit.revert();
-      miscSplit.revert();
+      if (rafId) cancelAnimationFrame(rafId);
+      if (htl) {
+        htl.kill();
+      }
+      try {
+        titleSplit && titleSplit.revert();
+        miscSplit && miscSplit.revert();
+      } catch (e) {}
+      setIsAnimating(false);
     };
-  }, [isLoading]);
+  }, [isLoading, modelReady]);
 
   return (
     <section id="hero" className="relative overflow-hidden max-w-520 mx-auto">
@@ -97,8 +136,16 @@ const Hero = ({ isLoading }) => {
 
         {/* 3D MODEL/EXPERIENCE */}
         <figure>
-          <div className="hero-3d-layout cursor-pointer">
-            <HeroExperience />
+          <div
+            ref={canvasRef}
+            className="hero-3d-layout cursor-pointer"
+            style={{ opacity: 0 }}
+          >
+            <HeroExperience
+              onLoaded={() => setModelReady(true)}
+              disableParticles={isAnimating}
+              useDemandFrameloop={isAnimating}
+            />
           </div>
         </figure>
       </div>

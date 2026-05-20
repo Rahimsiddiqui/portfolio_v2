@@ -18,16 +18,25 @@ import Footer from "@/components/Footer";
 
 export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
+  const [loaderVisible, setLoaderVisible] = useState(true);
 
   return (
     <>
-      {isLoading && <TerminalLoader onComplete={() => setIsLoading(false)} />}
+      {/* TerminalLoader remains mounted while fading; isLoading controls app content visibility */}
+      {loaderVisible && (
+        <TerminalLoader
+          onStart={() => setIsLoading(false)}
+          onComplete={() => setLoaderVisible(false)}
+        />
+      )}
+
+      {/* Always mount Hero so 3D assets can load while the terminal is active */}
+      <Hero isLoading={isLoading} />
 
       {!isLoading && (
         <>
           <Navbar />
           <main>
-            <Hero isLoading={isLoading} />
             <Showcase isLoading={isLoading} />
             <FeatureCards />
             <Experience />

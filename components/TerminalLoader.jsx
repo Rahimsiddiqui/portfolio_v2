@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 
-const TerminalLoader = ({ onComplete }) => {
+const TerminalLoader = ({ onStart, onComplete }) => {
   const [logs, setLogs] = useState([]);
   const [isMounted, setIsMounted] = useState(false);
   const containerRef = useRef(null);
@@ -58,17 +58,28 @@ const TerminalLoader = ({ onComplete }) => {
         currentLog++;
       } else {
         clearInterval(interval);
-        // Delay slightly after "Terminal ready" before fading out
+        // Notify parent to start app animations immediately while loader fades
+        try {
+          onStart && onStart();
+        } catch (e) {
+          console.warn("onStart callback failed", e);
+        }
+
+        // Short delay then fade out the loader; keep parent content visible while fading
         setTimeout(() => {
           if (containerRef.current) {
             gsap.to(containerRef.current, {
               opacity: 0,
-              duration: 0.8,
+              duration: 0.6,
               ease: "power2.inOut",
-              onComplete: onComplete,
+              onComplete: () => {
+                onComplete && onComplete();
+              },
             });
+          } else {
+            onComplete && onComplete();
           }
-        }, 600);
+        }, 100);
       }
     }, 250);
 
