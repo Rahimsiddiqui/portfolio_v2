@@ -1,12 +1,5 @@
 "use client";
 
-// HeroExperience
-// Renders the Three.js `Canvas` for the hero section. Exposes control props:
-// - `onLoaded` (callback) fires when GLTF and textures reach 100% load.
-// - `disableParticles` disables particle system to reduce GPU load during animations.
-// - `useDemandFrameloop` switches the canvas to `frameloop="demand"` while
-//   the page's intro animation runs to avoid contention with GSAP.
-
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useProgress } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";

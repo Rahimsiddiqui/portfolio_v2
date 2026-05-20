@@ -1,12 +1,5 @@
 "use client";
 
-// Hero section
-// Coordinates the hero copy and 3D experience. Waits for both the terminal
-// loader to signal `isLoading === false` and for the 3D model (`modelReady`) to
-// finish loading before starting GSAP animations. While the GSAP intro runs
-// we temporarily disable expensive effects (particles, continuous frameloop)
-// to ensure a smooth animation on lower-end devices.
-
 import Button from "@/components/Button";
 import Counter from "@/components/Counter";
 import HeroExperience from "@/components/Models/hero/HeroExperience";
