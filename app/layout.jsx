@@ -10,6 +10,9 @@ export const metadata = {
   description:
     "Full-stack web developer specializing in React, Next.js, and 3D web experiences. 2+ years of experience delivering high-quality projects.",
   keywords: ["web developer", "React", "Next.js", "full-stack", "3D web"],
+  icons: {
+    icon: "/images/fav.png",
+  },
   openGraph: {
     title: "Rahim Siddiqui - Portfolio",
     description: "Full-stack web developer portfolio",
