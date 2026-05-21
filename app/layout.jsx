@@ -1,8 +1,10 @@
 import "./globals.css";
 import { Mona_Sans, Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const monaSans = Mona_Sans({
   subsets: ["latin"],
@@ -36,8 +38,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={cn("h-full", "antialiased", monaSans.className, "font-sans", geist.variable)}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html
+      lang="en"
+      className={cn(
+        "h-full",
+        "antialiased",
+        monaSans.className,
+        "font-sans",
+        geist.variable,
+      )}
+    >
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

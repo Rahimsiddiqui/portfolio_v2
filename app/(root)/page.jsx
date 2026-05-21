@@ -3,18 +3,16 @@
 import { useState } from "react";
 
 // Sections
-import Hero from "@/sections/Hero";
-import Showcase from "@/sections/Showcase";
-import FeatureCards from "@/sections/FeatureCards";
-import Experience from "@/sections/Experience";
-import TechStack from "@/sections/TechStack";
-import Testimonials from "@/sections/Testimonials";
-import Contact from "@/sections/Contact";
+import Hero from "@/sections/landing-page/Hero";
+import Showcase from "@/sections/landing-page/Showcase";
+import FeatureCards from "@/sections/landing-page/FeatureCards";
+import Experience from "@/sections/landing-page/Experience";
+import TechStack from "@/sections/landing-page/TechStack";
+import Testimonials from "@/sections/landing-page/Testimonials";
+import Contact from "@/sections/landing-page/Contact";
 
 // Components
-import Navbar from "@/components/Navbar";
 import TerminalLoader from "@/components/TerminalLoader";
-import Footer from "@/components/Footer";
 
 export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,16 +33,12 @@ export default function LandingPage() {
 
       {!isLoading && (
         <>
-          <Navbar />
-          <main>
-            <Showcase isLoading={isLoading} />
-            <FeatureCards />
-            <Experience />
-            <TechStack />
-            <Testimonials />
-            <Contact />
-          </main>
-          <Footer />
+          <Showcase isLoading={isLoading} />
+          <FeatureCards />
+          <Experience />
+          <TechStack />
+          <Testimonials />
+          <Contact />
         </>
       )}
     </>
