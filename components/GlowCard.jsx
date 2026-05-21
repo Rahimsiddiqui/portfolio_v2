@@ -17,12 +17,26 @@ const GlowCard = ({ card, className, onClick, children }) => {
     cardRef.current.style.setProperty("--start", angle + 60);
   }, []);
 
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (!onClick) return;
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        onClick(e);
+      }
+    },
+    [onClick],
+  );
+
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       className={`card card-border ${card.mentions ? "review-card" : "timeline-card"} rounded-xl py-10 px-6 min-[450px]:p-10 mb-6 break-inside-avoid-column ${className || ""}`}
       onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={handleKeyDown}
     >
       <div className="glow" />
       <div className="flex items-center gap-1 mb-5">

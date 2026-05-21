@@ -17,10 +17,7 @@ const BlogFeed = ({ posts }) => {
             card={{ review: "" }}
             className="cursor-pointer pt-1! pb-14! group min-[450px]:px-7! blog-card"
             onClick={() =>
-              window.open(
-                `https://rahim-portfolio-v2.vercel.app/blog/${post.link}`,
-                "_blank",
-              )
+              window.open(`/blog/${post.link}`, "_blank", "noopener,noreferrer")
             }
           >
             <div className="flex flex-col h-full">

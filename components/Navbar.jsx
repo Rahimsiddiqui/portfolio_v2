@@ -13,47 +13,48 @@ const Navbar = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    setActiveSection("");
-  }, [pathname]);
-
-  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Scroll state for navbar background
+    // NON-HOME ROUTES
+    if (pathname !== "/") {
+      setActiveSection("");
+      setScrolled(false);
+      return;
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+
     handleScroll();
 
-    // ScrollTrigger for active section highlighting
     const sections = ["work", "experience", "skills", "testimonials"];
-    const triggers = [];
 
-    if (pathname !== "/") {
-      setActiveSection("");
-      return;
-    }
+    const triggers = sections
+      .map((id) => {
+        const element = document.getElementById(id);
 
-    sections.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        const trigger = ScrollTrigger.create({
+        if (!element) return null;
+
+        return ScrollTrigger.create({
           trigger: element,
           start: "top 40%",
           end: "bottom 40%",
           onToggle: (self) => {
-            if (self.isActive) setActiveSection(id);
+            if (self.isActive) {
+              setActiveSection(id);
+            }
           },
         });
-        triggers.push(trigger);
-      }
-    });
+      })
+      .filter(Boolean);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      triggers.forEach((t) => t.kill());
+
+      triggers.forEach((trigger) => trigger.kill());
     };
   }, [pathname]);
 
