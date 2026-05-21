@@ -31,6 +31,7 @@ const TechStack = () => {
           title="My Preferred Tech Stack"
           sub="🤝 The Skills I Bring to the Table"
         />
+
         <div className="tech-grid">
           {mainTechStackIcons.map((icon) => (
             <div
@@ -40,7 +41,7 @@ const TechStack = () => {
               <div className="tech-card-animated-bg" />
               <div className="tech-card-content">
                 <div className="tech-icon-wrapper">
-                  <TechIcon model={icon} applyScale={true} />
+                  <TechIcon model={icon} applyScale />
                 </div>
                 <div className="padding-x w-full">
                   <p>{icon.name}</p>
