@@ -49,7 +49,7 @@ export function Room(props) {
 
   return (
     <group {...props} dispose={null}>
-      <EffectComposer multisampling={8}>
+      <EffectComposer multisampling={2}>
         <SelectiveBloom
           selection={[screensRef]}
           intensity={0.9}
