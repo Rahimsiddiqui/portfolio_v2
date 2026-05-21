@@ -9,7 +9,6 @@ import { SkeletonCircle } from "@/components/Skeleton";
 
 const TechIcon = ({ model, applyScale = true }) => {
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
-  const [isActive, setIsActive] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -50,10 +49,6 @@ const TechIcon = ({ model, applyScale = true }) => {
   return (
     <div
       ref={wrapperRef}
-      onPointerEnter={() => setIsActive(true)}
-      onPointerLeave={() => setIsActive(false)}
-      onFocus={() => setIsActive(true)}
-      onBlur={() => setIsActive(false)}
       tabIndex={0}
       style={{ width: "100%", height: "100%" }}
     >
@@ -65,7 +60,6 @@ const TechIcon = ({ model, applyScale = true }) => {
 
       {isMounted && (
         <Canvas
-          // frameloop={isActive ? undefined : "demand"}
           dpr={
             typeof window !== "undefined"
               ? Math.min(window.devicePixelRatio || 1, 1.25)
