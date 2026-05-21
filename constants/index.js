@@ -15,10 +15,6 @@ const navLinks = [
     name: "Testimonials",
     link: "/#testimonials",
   },
-  {
-    name: "Blog",
-    link: "/blog",
-  },
 ];
 
 const words = [
@@ -293,6 +289,42 @@ const socialImgs = [
   },
 ];
 
+const blogCategories = ["All", "Web Dev", "3D Web", "Design", "Tips"];
+
+const blogPosts = [
+  {
+    title: "Building Immersive 3D Experiences with React Three Fiber",
+    excerpt:
+      "Learn how to integrate complex 3D models and shaders into your React applications for maximum impact.",
+    date: "May 15, 2026",
+    category: "3D Web",
+    image: "/images/cocktail-landing.png",
+    link: "25fb0f9c-277a-4acd-8876-67c8881ebbe5",
+    featured: true,
+  },
+  {
+    title:
+      "Next.js & GSAP: Professional Animations with the App Router and React Hooks",
+    excerpt:
+      "A deep dive into orchestration, ScrollTrigger, and SplitText for high-performance web animations.",
+    date: "May 10, 2026",
+    category: "Web Dev",
+    image: "/images/macbook-14.png",
+    link: "61123ba7-4319-4f46-a514-32e4937790f3",
+    featured: true,
+  },
+  {
+    title: "Modern UI Patterns with Tailwind CSS v4",
+    excerpt:
+      "Exploring the new OKLCH color system and JIT engine improvements in the latest Tailwind release.",
+    date: "May 05, 2026",
+    category: "Design",
+    image: "/images/financialatelier.png",
+    link: "507b6dbc-6671-4359-8daa-817ab52a99ec",
+    featured: false,
+  },
+];
+
 export {
   words,
   abilities,
@@ -305,4 +337,6 @@ export {
   miscTechStackIcons,
   navLinks,
   projects,
+  blogPosts,
+  blogCategories,
 };
