@@ -1,6 +1,7 @@
 "use client";
 
 import { navLinks } from "@/constants";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
@@ -26,9 +27,9 @@ const Navbar = () => {
   return (
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
-        <a href="#hero" className="logo">
+        <Link href="/" className="logo">
           Rahim Siddiqui
-        </a>
+        </Link>
 
         <nav className="desktop">
           <ul>

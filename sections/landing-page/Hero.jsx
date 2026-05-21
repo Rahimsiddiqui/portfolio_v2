@@ -4,83 +4,112 @@ import Button from "@/components/Button";
 import Counter from "@/components/Counter";
 import HeroExperience from "@/components/Models/hero/HeroExperience";
 import { words } from "@/constants/index";
-import { useGSAP } from "@gsap/react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/all";
-import { useState, useRef } from "react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-const Hero = ({ isLoading }) => {
-  const [modelReady, setModelReady] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+const Hero = () => {
   const canvasRef = useRef(null);
 
-  useGSAP(() => {
-    if (isLoading || !modelReady) return;
+  // Orchestration refs
+  const titleFinishedRef = useRef(false);
+  const modelLoadedRef = useRef(false);
+  const titleSplitRef = useRef(null);
+  const titleTlRef = useRef(null);
+  const revealTlRef = useRef(null);
 
-    let rafId = null;
-    let htl = null;
-    let titleSplit = null;
-    let miscSplit = null;
+  useEffect(() => {
+    let titleTl = gsap.timeline();
 
-    // Start the animation on the next animation frame to allow the canvas to render
-    rafId = requestAnimationFrame(() => {
-      setIsAnimating(true);
-      htl = gsap.timeline({
-        delay: 0.15,
-        onComplete: () => setIsAnimating(false),
-      });
-
-      titleSplit = SplitText.create(".hero-text h1", {
+    // Create SplitText for title lines once
+    try {
+      titleSplitRef.current = SplitText.create(".hero-text h1", {
         type: "lines",
       });
+    } catch (e) {
+      titleSplitRef.current = null;
+    }
 
-      miscSplit = SplitText.create(".animate", {
-        type: "lines",
-      });
+    const titleLines = titleSplitRef.current
+      ? titleSplitRef.current.lines
+      : document.querySelectorAll(".hero-text h1");
 
-      htl
-        .from(titleSplit.lines, {
-          opacity: 0,
-          yPercent: 35,
-          duration: 0.7,
-          stagger: 0.1,
-        })
-        .from(
-          miscSplit.lines,
-          {
-            opacity: 0,
-            yPercent: 35,
-            duration: 1,
-            stagger: 0.2,
-          },
-          "-=0.3",
-        );
-
-      // Fade in 3D canvas smoothly once model is loaded
-      if (canvasRef.current) {
-        htl.fromTo(
-          canvasRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 1 },
-          "-=0.5",
-        );
-      }
+    titleTl.from(titleLines, {
+      opacity: 0,
+      yPercent: 35,
+      duration: 0.7,
+      stagger: 0.1,
+      onComplete: () => {
+        titleFinishedRef.current = true;
+        // If model already loaded, start reveal sequence
+        if (modelLoadedRef.current && revealTlRef.current) {
+          revealTlRef.current.play();
+        }
+      },
     });
+
+    titleTlRef.current = titleTl;
+
+    // Prepare reveal timeline but keep paused. This sequence will NOT remount anything.
+    const revealTl = gsap.timeline({ paused: true });
+
+    // Fade in canvas
+    if (canvasRef.current) {
+      revealTl.to(
+        canvasRef.current,
+        { opacity: 1, duration: 0.9, ease: "power2.out" },
+        0,
+      );
+    }
+
+    titleTl.from(
+      ".hero-desc",
+      { opacity: 0, yPercent: 20, duration: 0.6, ease: "power2.out" },
+      "-=0.2",
+    );
+
+    titleTl.from(
+      ".hero-cta",
+      { opacity: 0, yPercent: 20, duration: 0.6, ease: "power2.out" },
+      "-=0.4",
+    );
+
+    // Hide skeleton overlay by fading its opacity then setting display none
+    revealTl.to(
+      ".hero-3d-skeleton",
+      {
+        opacity: 0,
+        duration: 0.6,
+        onComplete: () => {
+          const el = document.querySelector(".hero-3d-skeleton");
+          if (el) el.style.display = "none";
+        },
+      },
+      0.1,
+    );
+
+    revealTlRef.current = revealTl;
+
     return () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      if (htl) {
-        htl.kill();
-      }
       try {
-        titleSplit && titleSplit.revert();
-        miscSplit && miscSplit.revert();
+        titleTl.kill();
+        revealTl.kill();
+        titleSplitRef.current && titleSplitRef.current.revert();
       } catch (e) {}
-      setIsAnimating(false);
     };
-  }, [isLoading, modelReady]);
+  }, []);
+
+  // Called by HeroExperience when model finishes loading
+  function handleModelLoaded() {
+    modelLoadedRef.current = true;
+    // If title animation already finished, play reveal immediately
+    if (titleFinishedRef.current && revealTlRef.current) {
+      revealTlRef.current.play();
+    }
+  }
 
   return (
     <section id="hero" className="relative overflow-hidden max-w-520 mx-auto">
@@ -116,11 +145,11 @@ const Hero = ({ isLoading }) => {
               <h1>into Real Projects</h1>
               <h1>that Deliver Results</h1>
             </div>
-            <p className="text-white/90 animate md:text-xl relative z-10 pointer-events-none mt-2 mb-3 lg:mb-4">
+            <p className="hero-desc text-white/90 md:text-xl relative z-10 pointer-events-none mt-2 mb-3 lg:mb-4">
               Hi, I&apos;m Rahim—a passionate Web Developer based in Karachi
             </p>
             <Button
-              className="md:w-80 md:h-16 w-60 h-12 animate font-medium"
+              className="md:w-80 md:h-16 w-60 h-12 hero-cta font-medium"
               id="counter"
               text="See my Work"
             />
@@ -135,16 +164,21 @@ const Hero = ({ isLoading }) => {
             style={{ opacity: 0 }}
           >
             <HeroExperience
-              onLoaded={() => setModelReady(true)}
-              disableParticles={isAnimating}
-              useDemandFrameloop={isAnimating}
+              onLoaded={() => handleModelLoaded()}
+              disableParticles={false}
+              useDemandFrameloop={false}
             />
+          </div>
+
+          {/* Skeleton overlay — shares the exact same layout boundaries as the canvas */}
+          <div className="hero-3d-layout pointer-events-none hero-3d-skeleton flex items-center justify-center">
+            <div className="w-5/8 md:w-6/8 xl:w-4/8 h-3/8 md:h-4/8 bg-zinc-700/50 animate-pulse rounded-lg mt-30" />
           </div>
         </figure>
       </div>
 
       {/* COUNTER */}
-      <Counter isLoading={isLoading} />
+      <Counter />
     </section>
   );
 };
