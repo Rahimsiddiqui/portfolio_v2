@@ -71,16 +71,14 @@ const Navbar = () => {
               const isActive = activeSection === sectionId;
 
               return (
-                <li key={name} className="group">
+                <li key={name} className={`group ${isActive ? "active" : ""}`}>
                   <a href={link} className={isActive ? "active" : ""}>
                     <span
                       className={`transition-colors duration-300 ${isActive ? "text-white" : "text-white/80"}`}
                     >
                       {name}
                     </span>
-                    <span
-                      className={`underline ${isActive ? "w-full" : "w-0"}`}
-                    />
+                    <span className="underline" />
                   </a>
                 </li>
               );

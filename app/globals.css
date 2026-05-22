@@ -189,8 +189,24 @@ section {
           }
 
           .underline {
-            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
+            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300;
           }
+        }
+
+        li:hover .underline {
+          @apply w-full;
+        }
+
+        li.active .underline {
+          @apply w-full;
+        }
+
+        li:hover span {
+          @apply text-white;
+        }
+
+        li.active span {
+          @apply text-white;
         }
       }
     }
