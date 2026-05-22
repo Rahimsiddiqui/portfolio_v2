@@ -4,8 +4,10 @@ import GlowCard from "@/components/GlowCard";
 import { blogPosts } from "@/constants";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const BlogFeatured = () => {
+  const router = useRouter();
   const featuredPosts = blogPosts.filter((post) => post.featured);
 
   return (
@@ -19,9 +21,7 @@ const BlogFeatured = () => {
             key={post.link}
             card={{ review: "" }}
             className="cursor-pointer pt-1! pb-14! group blog-card"
-            onClick={() =>
-              window.open(`/blog/${post.link}`, "_blank", "noopener,noreferrer")
-            }
+            onClick={() => router.push(`/blog/${post.link}`)}
           >
             <div className="flex flex-col h-full">
               <div className="relative w-full h-35 sm:h-60 md:h-75 mb-6 rounded-lg overflow-hidden border border-black-50">
@@ -33,7 +33,7 @@ const BlogFeatured = () => {
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold border border-white/10">
-                  {post.category}
+                  {post.tags?.[0] || post.category}
                 </div>
               </div>
               <div className="flex flex-col grow">

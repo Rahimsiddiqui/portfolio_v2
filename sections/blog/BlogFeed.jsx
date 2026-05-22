@@ -3,8 +3,12 @@
 import GlowCard from "@/components/GlowCard";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const BlogFeed = ({ posts }) => {
+  const router = useRouter();
+
   return (
     <section className="padding-x-lg py-20 max-w-520 mx-auto">
       <h2 className="text-2xl md:text-3xl font-bold mb-10 text-white/90">
@@ -16,9 +20,7 @@ const BlogFeed = ({ posts }) => {
             key={post.link}
             card={{ review: "" }}
             className="cursor-pointer pt-1! pb-14! group min-[450px]:px-7! blog-card"
-            onClick={() =>
-              window.open(`/blog/${post.link}`, "_blank", "noopener,noreferrer")
-            }
+            onClick={() => router.push(`/blog/${post.link}`)}
           >
             <div className="flex flex-col h-full">
               <div className="relative w-full h-48 mb-5 rounded-lg overflow-hidden border border-black-50">
@@ -30,7 +32,7 @@ const BlogFeed = ({ posts }) => {
                   className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-300"
                 />
                 <div className="absolute top-2 left-3 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold border border-white/10">
-                  {post.category}
+                  {post.tags?.[0] || post.category}
                 </div>
               </div>
               <div className="flex flex-col grow">

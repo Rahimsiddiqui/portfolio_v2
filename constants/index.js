@@ -298,9 +298,57 @@ const blogPosts = [
       "Learn how to integrate complex 3D models and shaders into your React applications for maximum impact.",
     date: "May 15, 2026",
     category: "3D Web",
+    tags: ["3D Web", "Three.js", "React", "Performance"],
     image: "/images/cocktail-landing.png",
     link: "25fb0f9c-277a-4acd-8876-67c8881ebbe5",
     featured: true,
+    content: `
+      <p>The web is evolving beyond flat surfaces. With tools like React Three Fiber (R3F), developers can now build high-performance 3D experiences that run smoothly in the browser. But creating a truly immersive experience isn't just about dropping a 3D model into a scene—it's about lighting, orchestration, and performance optimization.</p>
+
+      <h3>1. The Foundation: Scene Orchestration</h3>
+      <p>Before adding complex models, you must understand the scene graph. In R3F, your components are part of a reactive tree. This means state changes in React directly affect your 3D objects. Utilizing hooks like <code>useFrame</code> allows you to create frame-by-frame animations, essential for interactive elements.</p>
+
+      <p>Camera movement also plays a massive role in immersion. Subtle motion tied to cursor position, scroll progress, or user interaction can make a static scene feel alive. Combining camera rigs with smooth lerping techniques creates cinematic transitions without sacrificing performance.</p>
+
+      <p>Structuring your scene properly is equally important. Grouping meshes, separating reusable components, and keeping logic modular helps maintain scalability as your application grows. Clean scene architecture prevents unnecessary re-renders and improves maintainability.</p>
+
+      <h3>2. Optimizing Assets</h3>
+      <p>3D models can be heavy. Using GLTF-pipeline or tools like gltf.report to compress your models into Draco-compressed GLB files is critical for performance. Always aim for lower polygon counts and efficient texture usage to keep load times minimal.</p>
+
+      <p>Texture optimization is often overlooked. Large 4K textures may look impressive, but they can destroy mobile performance. Using compressed texture formats like KTX2 and reducing unnecessary texture maps can significantly improve rendering efficiency.</p>
+
+      <p>Lazy loading assets is another important strategy. Instead of loading the entire experience upfront, dynamically load models and textures only when needed. Suspense boundaries in React help create smooth loading flows while keeping the initial bundle lightweight.</p>
+
+      <p>Instancing is also essential when rendering repeated objects such as particles, stars, grass, or buildings. Instead of creating hundreds of separate meshes, instanced rendering allows the GPU to efficiently handle thousands of objects with minimal overhead.</p>
+
+      <h3>3. Lighting and Atmosphere</h3>
+      <p>Lighting is the soul of 3D. Moving beyond simple point lights to environment maps and post-processing effects like Bloom and Depth of Field can elevate a project from "basic" to "professional".</p>
+
+      <p>HDRI environments help create realistic reflections and natural ambient lighting. Pairing HDRIs with physically based materials produces far more believable scenes than traditional lighting setups alone.</p>
+
+      <p>Fog, volumetric lighting, and subtle color grading can dramatically improve atmosphere. Small environmental effects make scenes feel deeper and more cinematic, especially in portfolio websites or interactive storytelling projects.</p>
+
+      <p>Shadows also deserve careful attention. High-resolution shadows can quickly become expensive, so balancing quality with performance is important. Techniques like baked lighting and contact shadows can preserve realism while maintaining high frame rates.</p>
+
+      <h3>4. Interactivity and User Experience</h3>
+      <p>A successful 3D experience is not just visually impressive—it must feel responsive. Interactive hover states, physics-based movement, and smooth transitions help users feel connected to the environment.</p>
+
+      <p>Gesture controls and scroll-driven animations are increasingly popular in modern web experiences. Libraries like Framer Motion combined with R3F create seamless interactions between traditional UI and 3D content.</p>
+
+      <p>Accessibility should also be considered. Users on low-end devices or slower networks should still receive a functional experience. Providing fallback UIs, reducing visual complexity dynamically, and respecting reduced motion preferences can improve usability for everyone.</p>
+
+      <h3>5. Performance Monitoring</h3>
+      <p>Optimization is an ongoing process. Monitoring frame rate, memory usage, and render calls helps identify bottlenecks before they become major issues. Tools like Drei's <code>Perf</code> component or browser profiling utilities are extremely useful during development.</p>
+
+      <p>Reducing unnecessary state updates, minimizing shader complexity, and avoiding expensive calculations inside animation loops can significantly improve performance. Even small inefficiencies become noticeable in real-time 3D applications.</p>
+
+      <p>Modern web GPUs are powerful, but efficient engineering remains critical. The best 3D web experiences balance visual fidelity with responsiveness, ensuring users enjoy smooth interactions across both desktop and mobile devices.</p>
+
+      <h3>6. The Future of 3D on the Web</h3>
+      <p>As WebGPU continues to mature, browser-based graphics will become even more advanced. Developers will gain access to lower-level GPU capabilities, enabling richer visual effects and improved rendering performance.</p>
+
+      <p>The future of the web is increasingly interactive, immersive, and spatial. Developers who understand performance, lighting, animation, and user experience today are positioning themselves at the forefront of the next generation of web development.</p>
+    `,
   },
   {
     title:
@@ -309,9 +357,39 @@ const blogPosts = [
       "A deep dive into orchestration, ScrollTrigger, and SplitText for high-performance web animations.",
     date: "May 10, 2026",
     category: "Web Dev",
+    tags: ["Web Dev", "GSAP", "Next.js", "Animations"],
     image: "/images/macbook-14.png",
     link: "61123ba7-4319-4f46-a514-32e4937790f3",
     featured: true,
+    content: `
+      <p>GSAP remains the industry standard for web animations. When combined with Next.js and React 19, it provides unparalleled control over the user experience. However, the App Router introduces new patterns for initialization and cleanup that every developer should master.</p>
+
+      <p>One of the most important mental shifts is understanding that animations are no longer “one-time effects.” In modern React applications, components mount, unmount, and rehydrate frequently. This means animation lifecycles must be tightly controlled to prevent memory leaks, duplicated tweens, or inconsistent states across route changes.</p>
+
+      <p>Performance also becomes a core concern. GSAP is highly optimized, but poor structure—like reinitializing timelines on every render—can quickly degrade frame rates. Proper dependency management in hooks ensures animations only run when necessary.</p>
+
+      <h3>Using useGSAP Hook</h3>
+      <p>The official <code>@gsap/react</code> package provides the <code>useGSAP</code> hook, which handles scoping and automatic cleanup—solving the common "ghost animation" issue in React development.</p>
+
+      <p>This hook ensures animations are automatically reverted when components unmount, eliminating the need for manual cleanup in most cases. It also provides a scoped selector system, meaning animations only target elements inside a specific container instead of the entire DOM.</p>
+
+      <p>Another advantage is predictable re-execution. When dependencies change, <code>useGSAP</code> can safely re-run animations without stacking previous timelines, which is a common issue when using raw <code>useEffect</code> with GSAP.</p>
+
+      <div class="blog-code-block">
+        <code>useGSAP(() => { gsap.to(".box", { x: 100 }); }, { scope: container });</code>
+      </div>
+
+      <p>In more advanced setups, you can combine <code>useGSAP</code> with timelines to orchestrate multi-step animations. This allows precise control over sequencing, easing, and synchronization between UI elements.</p>
+
+      <h3>Mastering ScrollTrigger</h3>
+      <p>ScrollTrigger allows you to create complex parallax effects and scroll-bound animations. The key is to ensure triggers are properly refreshed when the page layout changes, especially in dynamic Next.js routes.</p>
+
+      <p>A common mistake is initializing ScrollTrigger before the DOM is fully painted. This leads to incorrect trigger positions and broken activation points. Using lifecycle-safe initialization patterns or layout-ready hooks prevents these inconsistencies.</p>
+
+      <p>Another powerful feature is <code>ScrollTrigger.refresh()</code>, which recalculates all trigger positions after images load, fonts render, or layout shifts occur. This is essential for responsive and content-heavy pages.</p>
+
+      <p>For advanced interactions, ScrollTrigger can be paired with pinned sections, scrubbed animations, and snap behavior. These techniques allow developers to build cinematic scrolling experiences where content feels physically connected to scroll movement rather than simply appearing on screen.</p>
+    `,
   },
   {
     title: "Modern UI Patterns with Tailwind CSS v4",
@@ -319,9 +397,19 @@ const blogPosts = [
       "Exploring the new OKLCH color system and JIT engine improvements in the latest Tailwind release.",
     date: "May 05, 2026",
     category: "Design",
+    tags: ["Design", "Tailwind CSS", "UI/UX", "CSS"],
     image: "/images/financialatelier.png",
     link: "507b6dbc-6671-4359-8daa-817ab52a99ec",
     featured: false,
+    content: `
+      <p>Tailwind CSS v4 is a significant leap forward. By moving configuration into CSS and adopting the lightning-fast Rust engine, it streamlines the development workflow like never before.</p>
+
+      <h3>The OKLCH Color System</h3>
+      <p>One of the most exciting features is the native support for OKLCH colors. Unlike RGB or HEX, OKLCH provides consistent perceptual lightness, making it much easier to create accessible and beautiful color scales.</p>
+
+      <h3>Zero-Config Plugins</h3>
+      <p>Many features that previously required plugins or complex configurations are now built-in, allowing for a "CSS-first" approach to utility-first styling.</p>
+    `,
   },
 ];
 

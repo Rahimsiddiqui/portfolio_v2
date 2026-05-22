@@ -13,48 +13,47 @@ const Navbar = () => {
   const pathname = usePathname();
 
   useEffect(() => {
+    setActiveSection("");
+  }, [pathname]);
+
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // NON-HOME ROUTES
-    if (pathname !== "/") {
-      setActiveSection("");
-      setScrolled(false);
-      return;
-    }
-
+    // Scroll state for navbar background
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-
     handleScroll();
 
+    // ScrollTrigger for active section highlighting
     const sections = ["work", "experience", "skills", "testimonials"];
+    const triggers = [];
 
-    const triggers = sections
-      .map((id) => {
-        const element = document.getElementById(id);
+    if (pathname !== "/") {
+      setActiveSection("");
+      return;
+    }
 
-        if (!element) return null;
-
-        return ScrollTrigger.create({
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        const trigger = ScrollTrigger.create({
           trigger: element,
           start: "top 40%",
           end: "bottom 40%",
           onToggle: (self) => {
-            if (self.isActive) {
-              setActiveSection(id);
-            }
+            if (self.isActive) setActiveSection(id);
           },
         });
-      })
-      .filter(Boolean);
+        triggers.push(trigger);
+      }
+    });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-
-      triggers.forEach((trigger) => trigger.kill());
+      triggers.forEach((t) => t.kill());
     };
   }, [pathname]);
 
@@ -72,16 +71,14 @@ const Navbar = () => {
               const isActive = activeSection === sectionId;
 
               return (
-                <li key={name} className="group">
+                <li key={name} className={`group ${isActive ? "active" : ""}`}>
                   <a href={link} className={isActive ? "active" : ""}>
                     <span
                       className={`transition-colors duration-300 ${isActive ? "text-white" : "text-white/80"}`}
                     >
                       {name}
                     </span>
-                    <span
-                      className={`underline ${isActive ? "w-full" : "w-0"}`}
-                    />
+                    <span className="underline" />
                   </a>
                 </li>
               );
