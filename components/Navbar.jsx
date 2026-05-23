@@ -74,7 +74,7 @@ const Navbar = () => {
                 <li key={name} className={`group ${isActive ? "active" : ""}`}>
                   <a href={link} className={isActive ? "active" : ""}>
                     <span
-                      className={`transition-colors duration-300 ${isActive ? "text-white" : "text-white/80"}`}
+                      className={`transition-colors duration-300 ${isActive ? "text-white" : "text-white/80"} hover:text-white`}
                     >
                       {name}
                     </span>
