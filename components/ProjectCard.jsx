@@ -75,7 +75,7 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
       role="button"
       className={`
         project group relative overflow-hidden rounded-2xl border border-zinc-800 cursor-pointer flex flex-col
-        ${isMain ? "xl:w-[65%] xl:my-auto h-full justify-between pb-5 xl:pb-6" : "w-full pb-3"}
+        ${isMain ? "xl:w-[65%] h-full justify-between pb-5 xl:pb-6" : "w-full pb-3"}
       `}
     >
       {/* Glow Overlay - Light that follows cursor */}
@@ -150,7 +150,9 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
         </div>
 
         {/* Tags stay at the bottom of the top section */}
-        <div className="flex flex-wrap gap-2 px-6 pt-8">
+        <div
+          className={`flex flex-wrap gap-2 px-6 ${isMain ? "lg:px-8" : ""} pt-8`}
+        >
           {project.technologies?.slice(0, 3).map((tech, i) => (
             <span
               key={i}
@@ -165,7 +167,7 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
       {/* BOTTOM SECTION: Title + Description */}
       <div
         ref={contentRef}
-        className={`text-content p-6 pt-2 ${isMain ? "xl:pb-8" : "xl:pb-6"}`}
+        className={`text-content p-6 pt-2 ${isMain ? "xl:pb-8 lg:px-8" : "xl:pb-6"}`}
       >
         <h2
           className={`font-bold text-white text-2xl tracking-tight ${isMain ? "text-2xl md:text-3xl lg:text-4xl mt-5.25 mb-6.5" : "md:text-2xl mt-1 mb-4.5"}`}
@@ -174,7 +176,7 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
         </h2>
 
         <p
-          className={`text-white/80 leading-relaxed ${isMain ? "text-lg md:text-xl max-w-2xl" : "text-base"}`}
+          className={`text-white/80 leading-relaxed ${isMain ? "text-lg md:text-xl" : "text-base"}`}
         >
           {project.description}
         </p>

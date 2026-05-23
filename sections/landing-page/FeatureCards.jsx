@@ -1,3 +1,4 @@
+import TitleHeader from "@/components/TitleHeader";
 import { abilities } from "@/constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -22,7 +23,14 @@ const FeatureCards = () => {
       id="feature-cards"
       className="w-full mt-28 md:mt-24 padding-x-lg max-w-520 mx-auto"
     >
-      <div className="mx-auto grid-3-cols">
+      <div className="w-full h-full md:px-10 px-5">
+        <TitleHeader
+          title="My Technical Expertise"
+          sub="🚀 My Top Curated Expertise & Skills"
+        />
+      </div>
+
+      <div className="mx-auto grid-3-cols mt-16 md:mt-20">
         {abilities.map(({ imgPath, title, description }) => (
           <div
             key={title}
