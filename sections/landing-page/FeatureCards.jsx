@@ -23,7 +23,7 @@ const FeatureCards = () => {
       id="feature-cards"
       className="w-full mt-28 md:mt-24 padding-x-lg max-w-520 mx-auto"
     >
-      <div className="w-full h-full md:px-10 px-5">
+      <div className="w-full h-full md:px-10 px-4">
         <TitleHeader
           title="My Technical Expertise"
           sub="🚀 My Top Curated Expertise & Skills"

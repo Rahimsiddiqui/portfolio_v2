@@ -74,8 +74,7 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
       tabIndex={0}
       role="button"
       className={`
-        project group relative overflow-hidden rounded-2xl border border-zinc-800 cursor-pointer flex flex-col
-        ${isMain ? "xl:w-[65%] h-full justify-between pb-5 xl:pb-6" : "w-full pb-3"}
+        project group relative overflow-hidden rounded-2xl border border-zinc-800 cursor-pointer flex flex-col ${isMain ? "xl:w-[65%] h-full justify-between pb-5 xl:pb-6" : "w-full pb-3"}
       `}
     >
       {/* Glow Overlay - Light that follows cursor */}
@@ -89,7 +88,7 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
       {/* TOP SECTION: Grouped Image + Tags */}
       <div className="flex flex-col w-full">
         <div
-          className={`image-wrapper relative overflow-hidden rounded-xl w-full ${isMain ? "xl:h-105 md:h-87.5 h-80" : "xl:h-50 md:h-72 h-64"}`}
+          className={`image-wrapper relative overflow-hidden w-full ${isMain ? "xl:h-105 md:h-87.5 h-80" : "xl:h-60 md:h-72 h-64"}`}
         >
           <div
             ref={imageRef}

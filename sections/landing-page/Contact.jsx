@@ -130,7 +130,7 @@ const Contact = () => {
         id="contact"
         className="flex-center section-padding max-w-520 mx-auto"
       >
-        <div className="w-full h-full md:px-10 px-5">
+        <div className="w-full h-full md:px-10 px-4">
           <TitleHeader
             title="Get in Touch – Let’s Connect"
             sub="💬 Have questions or ideas? Let’s talk! 🚀"

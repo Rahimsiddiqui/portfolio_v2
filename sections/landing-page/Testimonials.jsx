@@ -27,7 +27,7 @@ const Testimonials = () => {
       id="testimonials"
       className="flex-center section-padding max-w-520 mx-auto"
     >
-      <div className="w-full h-full md:px-10 px-5">
+      <div className="w-full h-full md:px-10 px-4">
         <TitleHeader
           title="What People Say About Me"
           sub="⭐ Client Feedback Highlights"

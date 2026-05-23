@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="flex flex-col justify-center items-center md:items-start group transition-colors duration-300 max-w-fit">
+        <div className="flex flex-col justify-center items-center md:items-start group transition-colors duration-300 max-w-fit mx-auto md:mx-0">
           <Link
             href="/blog"
             className="text-white/90 group-hover:text-white relative"

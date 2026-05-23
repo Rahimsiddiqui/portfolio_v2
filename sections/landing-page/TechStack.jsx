@@ -26,7 +26,7 @@ const TechStack = () => {
       id="skills"
       className="flex-center section-padding max-w-520 mx-auto"
     >
-      <div className="w-full h-full md:px-10 px-5">
+      <div className="w-full h-full md:px-10 px-4">
         <TitleHeader
           title="My Preferred Tech Stack"
           sub="🤝 The Skills I Bring to the Table"
