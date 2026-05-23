@@ -175,42 +175,6 @@ section {
       @apply text-white/90 text-xl md:text-2xl font-semibold transition-transform duration-300 hover:scale-103;
     }
 
-    nav.desktop {
-      @apply hidden lg:flex items-center;
-
-      ul {
-        @apply flex space-x-8;
-
-        li {
-          @apply text-white/80 relative;
-
-          span {
-            @apply transition-colors duration-300 hover:text-white;
-          }
-
-          .underline {
-            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300;
-          }
-        }
-
-        li:hover .underline {
-          @apply w-full;
-        }
-
-        li.active .underline {
-          @apply w-full;
-        }
-
-        li:hover span {
-          @apply text-white;
-        }
-
-        li.active span {
-          @apply text-white;
-        }
-      }
-    }
-
     .contact-btn {
       @apply flex;
 
