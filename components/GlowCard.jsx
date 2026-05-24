@@ -32,7 +32,7 @@ const GlowCard = ({ card, className, onClick, children }) => {
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className={`card card-border ${card.mentions ? "review-card" : "timeline-card"} rounded-xl py-10 px-6 min-[450px]:p-10 mb-6 break-inside-avoid-column ${className || ""}`}
+      className={`card card-border bg-[#080808] ${card.mentions ? "review-card" : "timeline-card"} rounded-xl py-10 px-6 min-[450px]:p-10 mb-6 break-inside-avoid-column ${className || ""}`}
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}

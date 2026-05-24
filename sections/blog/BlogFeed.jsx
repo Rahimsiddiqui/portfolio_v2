@@ -3,7 +3,6 @@
 import GlowCard from "@/components/GlowCard";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const BlogFeed = ({ posts }) => {

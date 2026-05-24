@@ -27,10 +27,10 @@ const ProjectContent = ({ project }) => {
     const rect = showcaseRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     showcaseRef.current.style.setProperty("--mouse-x", `${x}px`);
     showcaseRef.current.style.setProperty("--mouse-y", `${y}px`);
-    
+
     const mouseX = x - rect.width / 2;
     const mouseY = y - rect.height / 2;
     let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
@@ -46,54 +46,65 @@ const ProjectContent = ({ project }) => {
       </div>
 
       <div className="relative z-10 pt-32 pb-20 px-5 md:px-10 lg:px-20 max-w-520 mx-auto">
-        <Link 
-          href="/projects" 
-          className="inline-flex items-center text-white/40 hover:text-white transition-colors mb-12 group text-sm uppercase tracking-widest font-bold"
+        <Link
+          href="/projects"
+          className="inline-flex items-center text-white/40 hover:text-white transition-colors mb-16 group text-sm uppercase tracking-widest font-bold"
         >
-          <MoveLeft size={16} className="mr-3 group-hover:-translate-x-1 transition-transform" />
+          <MoveLeft
+            size={16}
+            className="mr-3 group-hover:-translate-x-1 transition-transform"
+          />
           Back to Projects
         </Link>
 
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-16 md:mb-24">
-          <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.9] mb-8">
-              {project.title.split("|")[0].trim()}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed">
-              {project.description}
-            </p>
+        <div className="flex flex-col gap-8 mb-16 md:mb-24">
+          <div className="hero-badge">
+            <p>Project Case Study</p>
           </div>
-          
-          <div className="flex gap-4">
-             <a 
-              href={`${githubDomain}${project.allRounder}`}
-              target="_blank"
-              className="flex items-center justify-center size-14 border border-black-50 bg-black-100 rounded-2xl hover:bg-black-50 transition-colors"
-            >
-              <GithubIcon size={24} />
-            </a>
-            <a 
-              href={`https://${project.link ? project.link : project.allRounder}.vercel.app`}
-              target="_blank"
-              className="flex items-center justify-center px-8 h-14 bg-white text-black rounded-2xl font-bold hover:bg-black-50 hover:text-white transition-all group"
-            >
-              Live Demo
-              <Globe size={18} className="ml-2 group-hover:scale-110 transition-transform" />
-            </a>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+            <div className="max-w-4xl">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white/90 tracking-tight mb-6">
+                {project.title.split("|")[0].trim()}
+              </h1>
+              <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-3xl">
+                {project.description}
+              </p>
+            </div>
+
+            <div className="flex gap-4">
+              <a
+                href={`${githubDomain}${project.allRounder}`}
+                target="_blank"
+                className="flex items-center justify-center size-14 border border-black-50 bg-black-100 rounded-2xl hover:bg-black-50 transition-colors"
+              >
+                <GithubIcon size={24} />
+              </a>
+              <a
+                href={`https://${project.link ? project.link : project.allRounder}.vercel.app`}
+                target="_blank"
+                className="flex items-center justify-center px-8 h-14 bg-white text-black rounded-2xl font-bold hover:bg-black-50 hover:text-white transition-all group"
+              >
+                Live Demo
+                <Globe
+                  size={18}
+                  className="ml-2 group-hover:scale-110 transition-transform"
+                />
+              </a>
+            </div>
           </div>
         </div>
 
-        <div 
+        <div
           ref={showcaseRef}
           onMouseMove={handleMouseMove}
           className="card card-border rounded-3xl overflow-hidden mb-20 md:mb-32 aspect-video relative group transition-colors duration-1000"
         >
           <div className="glow absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity bg-[radial-gradient(800px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(255,255,255,0.15),transparent_40%)]" />
-          <Image 
+          <Image
             src={`/images/${project.allRounder}.png`}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-1000 group-hover:scale-102"
+            className="object-cover transition-transform duration-1000 group-hover:scale-101"
             priority
           />
         </div>
@@ -103,11 +114,11 @@ const ProjectContent = ({ project }) => {
             <h3 className="text-[10px] uppercase tracking-[0.4em] text-white/30 mb-10 font-black">
               Technologies & Frameworks
             </h3>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 md:gap-3">
               {project.technologies?.map((tech) => (
-                <div 
-                  key={tech} 
-                  className="px-8 py-4 bg-black-100 border border-black-50 rounded-2xl text-white/80 text-lg font-medium hover:border-white/20 transition-all cursor-default"
+                <div
+                  key={tech}
+                  className="px-6 py-3 bg-black-100 border border-black-50 rounded-xl text-white/80 text-base font-medium hover:border-white/20 transition-all cursor-default"
                 >
                   {tech}
                 </div>
@@ -120,29 +131,38 @@ const ProjectContent = ({ project }) => {
               <h3 className="text-[10px] uppercase tracking-[0.4em] text-white/30 mb-10 font-black">
                 About the project
               </h3>
-              <p className="text-white/60 leading-relaxed text-lg italic">
-                {project.title.split("|")[1] ? project.title.split("|")[1].trim() : "A specialized exploration into modern web architecture."}
+              <p className="text-white/60 leading-relaxed text-base md:text-lg italic font-light">
+                {project.title.split("|")[1]
+                  ? project.title.split("|")[1].trim()
+                  : "A specialized exploration into modern web architecture."}
               </p>
             </div>
-            
+
             <div className="mt-12 pt-12 border-t border-black-50/50">
-               <span className="text-[10px] uppercase tracking-[0.4em] text-white/30 block mb-4 font-black">
+              <span className="text-[10px] uppercase tracking-[0.4em] text-white/30 block mb-4 font-black">
                 Availability
               </span>
-              <p className="text-white font-medium text-lg">Completed & Deployed</p>
+              <p className="text-white font-medium text-base md:text-lg">
+                Completed & Deployed
+              </p>
             </div>
           </div>
         </div>
 
         <div className="mt-40 pt-20 border-t border-black-50 flex justify-between items-center group">
           <Link href="/projects" className="flex flex-col">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-white/20 mb-3 font-black">Explore more</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-white/20 mb-3 font-black">
+              Explore more
+            </span>
             <div className="text-white/40 hover:text-white transition-colors text-3xl md:text-4xl font-bold tracking-tighter">
               All Projects
             </div>
           </Link>
           <div className="size-20 rounded-full border border-black-50 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-500">
-             <MoveLeft size={32} className="rotate-180 group-hover:text-black transition-colors" />
+            <MoveLeft
+              size={32}
+              className="rotate-180 group-hover:text-black transition-colors"
+            />
           </div>
         </div>
       </div>

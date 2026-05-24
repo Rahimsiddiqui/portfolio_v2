@@ -28,30 +28,10 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
     cardRef.current.style.setProperty("--start", `${angle + 60}`);
     cardRef.current.style.setProperty("--mouse-x", `${x}px`);
     cardRef.current.style.setProperty("--mouse-y", `${y}px`);
-
-    // Subtle parallax for image
-    if (imageRef.current) {
-      const moveX = (x - rect.width / 2) / 25;
-      const moveY = (y - rect.height / 2) / 25;
-      gsap.to(imageRef.current, {
-        x: moveX,
-        y: moveY,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    }
   }, []);
 
   const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
-    if (imageRef.current) {
-      gsap.to(imageRef.current, {
-        x: 0,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-      });
-    }
   }, []);
 
   const handleMouseEnter = () => setIsHovered(true);
@@ -61,6 +41,10 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
       e.preventDefault();
       onClick();
     }
+  };
+
+  const truncate = (text) => {
+    return text.length > 160 ? text.slice(0, 160) + "..." : text;
   };
 
   return (
@@ -74,14 +58,14 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
       tabIndex={0}
       role="button"
       className={`
-        project group relative overflow-hidden rounded-2xl border border-zinc-800 cursor-pointer flex flex-col ${isMain ? "xl:w-[65%] h-full justify-between pb-5 xl:pb-6" : "w-full pb-3"}
+        project group relative overflow-hidden rounded-2xl border border-zinc-900 bg-[#080808] cursor-pointer flex flex-col ${isMain ? "xl:w-[65%] h-full justify-between pb-5 xl:pb-6" : "w-full pb-3"}
       `}
     >
       {/* Glow Overlay - Light that follows cursor */}
       <div
         className="glow absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%)`,
+          background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.055), transparent 45%)`,
         }}
       />
 
@@ -92,7 +76,7 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
         >
           <div
             ref={imageRef}
-            className="w-full h-full scale-110 transition-transform duration-700 ease-out group-hover:scale-105"
+            className="w-full h-full transition-transform duration-700 ease-out scale-100 group-hover:scale-105"
           >
             <Image
               src={`/images/${project.allRounder}.png`}
@@ -177,7 +161,7 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
         <p
           className={`text-white/80 leading-relaxed ${isMain ? "text-lg md:text-xl" : "text-base"}`}
         >
-          {project.description}
+          {isMain ? project.description : truncate(project.description)}
         </p>
       </div>
     </div>

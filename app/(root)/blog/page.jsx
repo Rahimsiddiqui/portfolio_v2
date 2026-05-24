@@ -24,7 +24,6 @@ const Blog = () => {
 
     if (cards.length === 0) return;
 
-    // Set initial state for cards that are about to be animated
     // Set initial state for new cards
     gsap.set(cards, { opacity: 0, yPercent: 25 });
 

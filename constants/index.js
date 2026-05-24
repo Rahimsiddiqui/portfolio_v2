@@ -47,7 +47,7 @@ const projects = [
   {
     title: "Macbook Landing Page",
     description:
-      "A recreation of Apple's Macbook landing page, built with React and Tailwind for pixel-perfect design and smooth animations.",
+      "A pixel-perfect recreation of Apple’s MacBook landing page built with React and Tailwind CSS, focusing on clean layout structure, refined typography, and Apple’s minimalist design language. It features smooth, subtle animations and responsive design to ensure a consistent experience across all devices, while maintaining strong visual hierarchy and product-focused storytelling.",
     allRounder: "macbook-14",
     technologies: [
       "React",
@@ -61,21 +61,21 @@ const projects = [
   {
     title: "Financial Atelier",
     description:
-      "A web app where bespoke strategies turn finance into art with precision and insight.",
+      "A full-stack, serverless web application built with Next.js, where bespoke strategies transform financial analysis into a visual and intuitive experience. It focuses on presenting complex financial insights with precision and clarity through a clean, modern UI, emphasizing structured data flow, performance, and scalable architecture while maintaining a smooth and professional user experience.",
     allRounder: "financialatelier",
     technologies: ["React", "Node.js", "Serverless", "MongoDB", "Tailwind"],
   },
   {
     title: "Qubli AI",
     description:
-      "A comprehensive AI-driven platform for automated performance reviews and developer insights.",
+      "A comprehensive AI-powered learning platform featuring interactive quizzes, smart flashcards, and an AI chatbot for real-time assistance. Qubli AI enhances learning through adaptive questioning, spaced repetition, and personalized feedback, while also offering review and performance tracking tools to help users strengthen understanding and retain knowledge effectively.",
     allRounder: "qubli-ai",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
   },
   {
     title: "Olivia",
     description:
-      "A modern and minimal note-taking application built for distraction-free writing, organized note management, and seamless accessibility with search and shareable links.",
+      "A modern, minimal note-taking application designed for distraction-free writing and efficient organization of ideas. Olivia focuses on a clean and intuitive interface with fast search, seamless note management, and shareable links for easy access across devices, ensuring a smooth and productive writing experience.",
     allRounder: "olivia",
     link: "rahim-olivia",
     technologies: [
@@ -89,7 +89,7 @@ const projects = [
   {
     title: "Expresso",
     description:
-      "A sleek and minimal speech-to-text web app designed for quick real-time transcription, a clean distraction-free experience, and smooth, responsive voice input for effortless note capture.",
+      "A sleek, minimal speech-to-text web application built for fast and accurate real-time transcription, offering a distraction-free interface for effortless voice capture. Expresso leverages the Web Speech API to convert speech into text instantly, with smooth responsiveness, simple note handling, and a clean productivity-focused design for quick idea logging and seamless writing flow.",
     allRounder: "expresso",
     link: "rahim-expresso",
     technologies: [
@@ -104,7 +104,7 @@ const projects = [
   {
     title: "Nexus",
     description:
-      "A modern and responsive todo application built for fast task management, seamless productivity, and smooth user interactions.",
+      "A modern, responsive task management application designed for fast and efficient productivity, allowing users to create, organize, and track tasks with ease. Nexus focuses on a clean and intuitive interface with smooth interactions, persistent local storage, and a streamlined workflow that helps users stay organized and productive without unnecessary complexity.",
     allRounder: "todo-app",
     link: "rahim-todo-app",
     technologies: ["React", "Localstorage", "Next.js", "Tailwind"],
