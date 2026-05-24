@@ -43,6 +43,14 @@ const projects = [
     allRounder: "cocktail-landing",
     link: "coctail-landing",
     technologies: ["React", "GSAP", "Next.js", "Tailwind", "React Responsive"],
+    year: 2026,
+    content: `
+      <p>Mojito was born out of a desire to push the boundaries of traditional web interfaces. By combining the power of Next.js with the fluid animation capabilities of GSAP, I created a digital experience that feels as refreshing as the drink it represents.</p>
+      <h3>Visual Identity</h3>
+      <p>The core design philosophy centered around high-contrast typography and smooth, physics-based interactions. Every element, from the hero section to the drink selection, was crafted to guide the user's eye and reward interaction with subtle feedback.</p>
+      <h3>Technical Execution</h3>
+      <p>Implementing complex animations in a React environment requires careful orchestration. I utilized the <code>useGSAP</code> hook to manage timeline lifecycles, ensuring that transitions remain performant even on mobile devices. The responsive architecture was built using Tailwind CSS, providing a consistent layout across all viewports.</p>
+    `,
   },
   {
     title: "Macbook Landing Page",
@@ -57,6 +65,14 @@ const projects = [
       "Next.js",
       "React Responsive",
     ],
+    year: 2026,
+    content: `
+      <p>Recreating a masterpiece of design like Apple's MacBook landing page is a masterclass in attention to detail. This project was a rigorous exercise in translating high-end marketing design into production-ready code.</p>
+      <h3>Minimalism and Precision</h3>
+      <p>The challenge was to capture the "Apple Feel"—the specific timing of fades, the precise kerning of typography, and the clean negative space. I spent hours refining the responsive behavior to ensure that the product storytelling remained impactful from mobile screens to 5K monitors.</p>
+      <h3>3D Integration</h3>
+      <p>Using Three.js, I integrated an interactive 3D model of the MacBook, allowing users to explore the hardware in real-time. This adds a layer of depth that static images simply cannot achieve, making the landing page feel like a premium showroom experience.</p>
+    `,
   },
   {
     title: "Financial Atelier",
@@ -64,6 +80,14 @@ const projects = [
       "A full-stack, serverless web application built with Next.js, where bespoke strategies transform financial analysis into a visual and intuitive experience. It focuses on presenting complex financial insights with precision and clarity through a clean, modern UI, emphasizing structured data flow, performance, and scalable architecture while maintaining a smooth and professional user experience.",
     allRounder: "financialatelier",
     technologies: ["React", "Node.js", "Serverless", "MongoDB", "Tailwind"],
+    year: 2026,
+    content: `
+      <p>Financial Atelier simplifies the complexity of wealth management. It transforms raw data into a visual narrative, allowing users to see their financial future with clarity and confidence.</p>
+      <h3>Data Visualization</h3>
+      <p>The heart of the application is its intuitive dashboard. By leveraging custom SVG charting and reactive data bindings, I ensured that users could interact with their financial metrics in real-time. The UI was designed to feel professional yet accessible, avoiding the typical clutter of financial software.</p>
+      <h3>Serverless Architecture</h3>
+      <p>Built on a serverless foundation with Next.js and MongoDB, the application scales effortlessly. This choice allows for rapid development cycles and ensures high availability, keeping user data secure and accessible at all times.</p>
+    `,
   },
   {
     title: "Qubli AI",
@@ -71,6 +95,14 @@ const projects = [
       "A comprehensive AI-powered learning platform featuring interactive quizzes, smart flashcards, and an AI chatbot for real-time assistance. Qubli AI enhances learning through adaptive questioning, spaced repetition, and personalized feedback, while also offering review and performance tracking tools to help users strengthen understanding and retain knowledge effectively.",
     allRounder: "qubli-ai",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
+    year: 2025,
+    content: `
+      <p>Qubli AI represents the next step in educational technology. It harnesses the power of Large Language Models to provide a personalized tutor for every student.</p>
+      <h3>AI-Driven Learning</h3>
+      <p>The platform uses an intelligent backend to generate quizzes and flashcards based on user-provided content. By implementing spaced repetition algorithms, I ensured that users retain information longer. The integrated AI chatbot provides instant clarification on difficult concepts, making learning truly interactive.</p>
+      <h3>User-Centric Design</h3>
+      <p>The dashboard focuses on progress tracking and gamification. By visualizing learning streaks and performance metrics, the application motivates users to stay consistent. The clean, modern aesthetic reduces cognitive load, allowing students to focus on what matters: mastering the subject.</p>
+    `,
   },
   {
     title: "Olivia",
@@ -85,6 +117,14 @@ const projects = [
       "Tailwind",
       "Context API",
     ],
+    year: 2026,
+    content: `
+      <p>Olivia is built for those who value simplicity. It's a sanctuary for your thoughts, designed to let you write without the noise of typical productivity tools.</p> 
+      <h3>Minimalism in Motion</h3>
+      <p>The interface was stripped down to the essentials. I focused on typography and white space to create a "digital paper" feel. The search functionality is instantaneous, ensuring that you can find your ideas the moment they strike.</p>
+      <h3>Privacy and Speed</h3>
+      <p>By utilizing local storage and client-side processing, Olivia is blazingly fast and respects user privacy. There are no heavy database round-trips; your notes stay with you, ensuring a seamless writing flow even in offline environments.</p>
+    `,
   },
   {
     title: "Expresso",
@@ -100,6 +140,14 @@ const projects = [
       "Context API",
       "Web Speech API",
     ],
+    year: 2026,
+    content: `
+      <p>Expresso was built to capture thoughts at the speed of sound. It turns your voice into a powerful tool for writing and logging ideas.</p>
+      <h3>Real-Time Voice Capture</h3>
+      <p>Leveraging the Web Speech API, I implemented a robust transcription engine that handles real-time voice input with high accuracy. The interface is intentionally minimal, designed to disappear so that you can focus entirely on your speech.</p>
+      <h3>Productivity Flow</h3>
+      <p>Transcribed notes are instantly saved and can be easily organized. Whether you're recording a lecture, a meeting, or a sudden burst of inspiration, Expresso ensures that your words are preserved and ready for refinement.</p>
+    `,
   },
   {
     title: "Nexus",
@@ -108,6 +156,14 @@ const projects = [
     allRounder: "todo-app",
     link: "rahim-todo-app",
     technologies: ["React", "Localstorage", "Next.js", "Tailwind"],
+    year: 2026,
+    content: `
+      <p>Nexus is the backbone of personal organization. It brings structure to your daily tasks through a clean and focused interface.</p>
+      <h3>Efficiency First</h3>
+      <p>I designed Nexus with a "zero-friction" philosophy. Adding, completing, and organizing tasks happens with single-click interactions. The layout is fully responsive, ensuring your todo list is as effective on your phone as it is on your desktop.</p>
+      <h3>Reliable and Fast</h3>
+      <p>By using optimized React state management and local storage persistence, Nexus provides a lag-free experience. It’s a tool that works as fast as you do, helping you stay on top of your goals without getting in your way.</p>
+    `,
   },
 ];
 
