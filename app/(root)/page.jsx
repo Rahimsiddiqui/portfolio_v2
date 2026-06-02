@@ -1,7 +1,5 @@
 "use client";
 
-
-
 // Sections
 import Hero from "@/sections/landing-page/Hero";
 import Showcase from "@/sections/landing-page/Showcase";
@@ -12,7 +10,6 @@ import Testimonials from "@/sections/landing-page/Testimonials";
 import Contact from "@/sections/landing-page/Contact";
 
 // Components
-
 
 export default function LandingPage() {
   return (
