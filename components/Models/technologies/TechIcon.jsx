@@ -10,7 +10,7 @@ import {
 } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { modelsMap } from "./index";
-import { SkeletonCircle } from "@/components/Skeleton";
+import SkeletonCircle from "@/components/SkeletonCircle";
 
 function LoadingWatcher({ onReady }) {
   const { active, progress } = useProgress();
