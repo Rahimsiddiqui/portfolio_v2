@@ -44,18 +44,33 @@ const Showcase = ({ isLoading }) => {
     <section id="work" className="app-showcase max-w-520 mx-auto px-5 md:px-10 lg:px-20">
       <div className="w-full">
         <div className="showcase-layout flex flex-col xl:flex-row gap-12 xl:gap-16">
-          {/* Main Featured Project - 65% width */}
-          {projects.slice(0, 1).map((project, idx) => (
-            <ProjectCard
-              key={idx}
-              project={project}
-              isMain={true}
-              githubDomain={githubDomain}
-              onClick={() => router.push(`/projects/${project.allRounder}`)}
-            />
-          ))}
+          {/* Left Column - Main Card + Long Card (65% width) */}
+          <div className="main-column flex flex-col gap-12 xl:gap-16 xl:w-[65%]">
+            {/* Main Featured Project */}
+            {projects.slice(0, 1).map((project, idx) => (
+              <ProjectCard
+                key={idx}
+                project={project}
+                isMain={true}
+                githubDomain={githubDomain}
+                onClick={() => router.push(`/projects/${project.allRounder}`)}
+              />
+            ))}
 
-          {/* Secondary Projects Grid - 35% width */}
+            {/* Long Card Below Main */}
+            {projects.slice(3, 4).map((project, idx) => (
+              <ProjectCard
+                key={idx + 3}
+                project={project}
+                isMain={false}
+                isLong={true}
+                githubDomain={githubDomain}
+                onClick={() => router.push(`/projects/${project.allRounder}`)}
+              />
+            ))}
+          </div>
+
+          {/* Right Column - Secondary Projects (35% width) */}
           <div className="project-list-wrapper flex flex-col md:flex-row xl:flex-col gap-12 xl:gap-16 xl:w-[35%]">
             {projects.slice(1, 3).map((project, idx) => (
               <ProjectCard

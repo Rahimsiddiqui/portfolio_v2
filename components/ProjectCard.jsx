@@ -3,13 +3,21 @@
 import { useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { LinkIcon } from "lucide-react";
-import gsap from "gsap";
+import { useMediaQuery } from "react-responsive";
 
-const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
+const ProjectCard = ({
+  project,
+  isMain = false,
+  isLong = false,
+  githubDomain,
+  onClick,
+}) => {
   const cardRef = useRef(null);
   const imageRef = useRef(null);
   const contentRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+
+  const isLarge = useMediaQuery({ query: "(min-width: 1280px)" });
 
   // Glow effect logic (similar to GlowCard but optimized)
   const handleMouseMove = useCallback((e) => {
@@ -43,8 +51,8 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
     }
   };
 
-  const truncate = (text) => {
-    return text.length > 160 ? text.slice(0, 160) + "..." : text;
+  const truncate = (text, length = 160) => {
+    return text.length > length ? text.slice(0, length) + "..." : text;
   };
 
   return (
@@ -58,8 +66,10 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
       tabIndex={0}
       role="button"
       className={`
-        project group relative overflow-hidden rounded-2xl border border-zinc-900 bg-[#080808] cursor-pointer flex flex-col ${isMain ? "xl:w-[65%] h-full justify-between pb-5 xl:pb-6" : "w-full pb-3"}
-      `}
+      project group relative overflow-hidden rounded-2xl border border-zinc-900 bg-[#080808] cursor-pointer flex flex-col
+      ${isMain ? "xl:w-full h-fit pb-5 xl:pb-6" : "w-full pb-3"}
+      ${isLong ? "xl:flex-row xl:pb-0 xl:gap-2" : ""}
+    `}
     >
       {/* Glow Overlay - Light that follows cursor */}
       <div
@@ -72,7 +82,7 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
       {/* TOP SECTION: Grouped Image + Tags */}
       <div className="flex flex-col w-full">
         <div
-          className={`image-wrapper relative overflow-hidden w-full ${isMain ? "xl:h-105 md:h-87.5 h-80" : "xl:h-60 md:h-72 h-64"}`}
+          className={`image-wrapper relative overflow-hidden w-full ${isMain ? "xl:h-105 md:h-87.5 h-80" : isLong ? "h-48 md:h-56 xl:h-56" : "xl:h-60 md:h-72 h-64"}`}
         >
           <div
             ref={imageRef}
@@ -133,35 +143,37 @@ const ProjectCard = ({ project, isMain = false, githubDomain, onClick }) => {
         </div>
 
         {/* Tags stay at the bottom of the top section */}
-        <div
-          className={`flex flex-wrap gap-2 px-6 ${isMain ? "lg:px-8" : ""} pt-8`}
-        >
-          {project.technologies?.slice(0, 3).map((tech, i) => (
-            <span
-              key={i}
-              className="text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-white/5 border border-white/10 text-white/60"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+        {(!isLong || !isLarge) && (
+          <div
+            className={`flex flex-wrap gap-2 px-6 ${isMain ? "lg:px-8" : ""} ${isLong ? "pt-6" : "pt-8"}`}
+          >
+            {project.technologies?.slice(0, 3).map((tech, i) => (
+              <span
+                key={i}
+                className="text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-white/5 border border-white/10 text-white/60"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* BOTTOM SECTION: Title + Description */}
       <div
         ref={contentRef}
-        className={`text-content p-6 pt-2 ${isMain ? "xl:pb-8 lg:px-8" : "xl:pb-6"}`}
+        className={`text-content p-6 pt-2 ${isMain ? "xl:pb-8 lg:px-8" : isLong ? "xl:pb-5 flex flex-col" : "xl:pb-6"}`}
       >
         <h2
-          className={`font-bold text-white text-2xl tracking-tight ${isMain ? "text-2xl md:text-3xl lg:text-4xl mt-5.25 mb-6.5" : "md:text-2xl mt-1 mb-4.5"}`}
+          className={`font-bold text-white text-2xl tracking-tight ${isMain ? "md:text-3xl lg:text-4xl mt-2 md:mt-2.5 mb-6.5" : isLong ? "md:text-3xl lg:text-4xl xl:text-2xl mt-1 md:mt-2.5" : "mt-1 mb-5.5"}`}
         >
           {project.title.split("|")[0].trim()}
         </h2>
 
         <p
-          className={`text-white/80 leading-relaxed ${isMain ? "text-lg md:text-xl" : "text-base"}`}
+          className={`text-white/80 leading-relaxed text-base ${isMain ? "md:text-lg lg:text-xl" : isLong ? "md:text-lg lg:text-xl xl:text-base line-clamp-2" : ""}`}
         >
-          {isMain ? project.description : truncate(project.description)}
+          {isMain ? project.description : truncate(project.description, 160)}
         </p>
       </div>
     </div>
