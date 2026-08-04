@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import {
   Drawer,
   DrawerContent,
@@ -16,6 +16,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { downloadResume } from "@/lib/downloadResume";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -109,11 +110,21 @@ const Navbar = () => {
             </ul>
           </nav>
 
-          <Link href="/#contact" className="contact-btn group">
-            <div className="inner">
-              <span>Contact me</span>
-            </div>
-          </Link>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={downloadResume}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors duration-300 border border-white/20 hover:border-white/35 cursor-pointer"
+            >
+              <Download size={18} />
+              <span>Resume</span>
+            </button>
+
+            <Link href="/#contact" className="contact-btn group">
+              <div className="inner">
+                <span>Contact me</span>
+              </div>
+            </Link>
+          </div>
         </div>
 
         {/* Mobile Header */}
@@ -174,6 +185,17 @@ const Navbar = () => {
                   </nav>
 
                   <div className="pt-13">
+                    <button
+                      onClick={() => {
+                        downloadResume();
+                        setIsOpen(false);
+                      }}
+                      className="flex items-center justify-center gap-2 w-fit mx-auto mb-4 px-12 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors duration-300 border border-white/20"
+                    >
+                      <Download size={18} />
+                      <span className="text-lg font-medium">Resume</span>
+                    </button>
+
                     <Link
                       href="/#contact"
                       onClick={() => setIsOpen(false)}

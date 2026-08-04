@@ -13,6 +13,10 @@
 # testing
 /coverage
 
+# environment
+.vscode
+.cspell
+
 # next.js
 /.next/
 /out/
